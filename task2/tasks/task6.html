@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Задача 6</h2>
+    <p>З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо
+        та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.</p>
+
+    <script>
+        // Prise product
+        let priseFirstProduct = parseFloat(prompt(`Введіть вартість першого продукта`))
+        let priseSecondProduct = parseFloat(prompt(`Введіть вартість другого продукта`))
+        let priseThirdProduct = parseFloat(prompt(`Введіть вартість третього продукта`))
+        // Quantity product
+        let quantityFirstProduct = parseFloat(prompt(`Введіть кількість першого продукту`))
+        let quantitySecondProduct = parseFloat(prompt(`Введіть кількість другого продукту`))
+        let quantityThirdProduct = parseFloat(prompt(`Введіть кількість третього продукту`))
+
+        let resultFirstProduct = priseFirstProduct * quantityFirstProduct
+        let resultSecondProduct = priseSecondProduct * quantitySecondProduct
+        let resultThirdProduct = priseThirdProduct * quantityThirdProduct
+        let resultAllProduct = resultFirstProduct + resultSecondProduct + resultThirdProduct
+
+        document.write(`
+        <p>Ціна ${priseFirstProduct}<span>------</span>Кількість ${quantityFirstProduct}<span>------</span>Сума ${resultFirstProduct}</p>
+        <p>Ціна ${priseSecondProduct}<span>------</span>Кількість ${quantitySecondProduct}<span>------</span>Сума ${resultSecondProduct}</p>
+        <p>Ціна ${priseThirdProduct}<span>------</span>Кількість ${quantityThirdProduct}<span>------</span>Сума ${resultThirdProduct}</p>
+        <p>Загальна сума ${resultAllProduct}</p>
+        `)
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Задача 4</h2>
+    <p>Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.</p>
+    <script>
+        const ONE_METER_IN_CENTIMETERS = 100
+        const ONE_KILOMETR_IN_CENTIMETERS = 100000
+        let centimetreLenght = parseFloat(prompt(`Введіть довжину в сантиметрах`))
+
+        let resultMeters = centimetreLenght / ONE_METER_IN_CENTIMETERS
+        let resultKilometers = centimetreLenght / ONE_KILOMETR_IN_CENTIMETERS
+
+        document.write(`Дано: ${centimetreLenght} це - ${resultMeters} метрів, ${resultKilometers} кілометрів`)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Задача 3</h2>
+    <p>Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від загальної вартості).</p>
+    <script>
+        const PERCENT_VAT = 5
+        let quantityProduct = parseFloat(prompt(`Введіть кількість товару`))
+        let priceProduct = parseFloat(prompt(`Введіть ціну товару`))
+
+        let totalCost = quantityProduct * priceProduct
+        let onePersent = totalCost / 100
+        let resultPersentVat = onePersent * PERCENT_VAT
+
+        document.write(`Загальна вартість ${totalCost.toFixed(2)}, ПДВ ${resultPersentVat.toFixed(2)}`)
+    </script>
+</body>
+
+</html>
