@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Задача 2</h2>
+    <p>З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці,
+        інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.</p>
+    <p id="2"></p>
+
+    <script>
+        let secondTask = document.getElementById(`2`)
+        let productPrise = parseFloat(prompt(`Ціна товару`))
+        let amountOfMoney = parseFloat(prompt(`Кількість грошей`))
+
+        let differences = amountOfMoney - productPrise
+
+        if (amountOfMoney < productPrise)
+            secondTask.innerHTML = `Замало грошей`
+        else if (differences >= 4)
+            secondTask.innerHTML = `Залишилось ${differences}, можна ще купити лотерею за 4 грн`
+        else
+            secondTask.innerHTML = `Залишилось ${differences} грн`
+    </script>
+</body>
+
+</html>

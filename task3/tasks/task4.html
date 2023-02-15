@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Задача 4</h2>
+    <p>З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).</p>
+    <p id="4"></p>
+
+    <script>
+        let fourTask = document.getElementById(`4`)
+        let userAge = parseInt(prompt(`Введіть свій вік`))
+
+        if(userAge >= 3 && userAge<=5)
+            fourTask.innerHTML = `дитина у садочоку`
+        else if (userAge >=6 && userAge <= 17)
+            fourTask.innerHTML = `дитина у школі`
+        else if (userAge >= 18 && userAge <= 23)
+            fourTask.innerHTML = `студент`
+        else if (userAge >= 24 && userAge <=59)
+            fourTask.innerHTML = `працівник`
+        else if (userAge >= 60 && userAge <= 100)
+            fourTask.innerHTML = `пенсіонер`
+        
+    </script>
+</body>
+</html>

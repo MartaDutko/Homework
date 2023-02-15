@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Задача 5</h2>
+    <p>З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести
+        на екран назву транспортного засобу, яким він може керувати.</p>
+    <p id="5"></p>
+    <script>
+        let fifeTask = document.getElementById(`5`)
+        let carCategory = prompt(`Введіть категорію водія`).toLocaleUpperCase()
+
+        if(carCategory === `A`)
+            fifeTask.innerHTML = `А-мотоцикл`
+        else if (carCategory ===`B`)
+            fifeTask.innerHTML = `В-легковий автомобіль`
+        else if (carCategory === `C`)
+            fifeTask.innerHTML = `С-вантажний автомобіль`
+        else
+            fifeTask.innerHTML = `Некоректний ввід`
+    </script>
+</body>
+
+</html>
