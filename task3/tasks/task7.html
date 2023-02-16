@@ -14,11 +14,16 @@
     <script>
         let seventhTask = document.getElementById(`7`)
         let numberOfMonth = parseInt(prompt(`Введіть номер місяця`))
-        const monthOfYear = [`Січень`,`Лютий`,`Березень`,`Квітень`,`Травень`,`Червень`,`Липень`,`Серпень`,`Вересень`,`Жовтень`,`Листопад`,`Грудень`]
-        if(numberOfMonth>=1 && numberOfMonth<=12)
-            seventhTask.innerHTML = monthOfYear[numberOfMonth-1]
-        else
-            seventhTask.innerHTML =`Некоректний ввід`
+
+        if(numberOfMonth >= 3 && numberOfMonth <= 5)
+        console.log('spring');
+        else if(numberOfMonth >=6 && numberOfMonth <=8)
+        console.log('summer');
+        else if(numberOfMonth >=9 && numberOfMonth <=11)
+        console.log('fall');
+        else if(numberOfMonth >=1 && numberOfMonth <=2 || numberOfMonth == 12)
+        console.log('winter');
+        
     </script>
 </body>
 </html>
