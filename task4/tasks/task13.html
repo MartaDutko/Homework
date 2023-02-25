@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>13. Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів
+        користувач намагається потопити корабель.</p>
+    <script>
+        const randomShotY = 1 + Math.floor(Math.random() * (10 - 0) + 1)
+        const randomShotX = 1 + Math.floor(Math.random() * (10 - 0) + 1)
+        console.log(`Y = ${randomShotY}, X=${randomShotX}`);
+
+        let i = 0
+        let userFirstShot
+        let userSecondShot
+        do {
+            userFirstShot = parseInt(prompt(`Введіть координати Y для пострілу, від 1 - 10
+            Ви використали ${i} снарядів з 5`))
+            userSecondShot = parseInt(prompt(`Введіть координати X для пострілу, від 1 - 10`))
+            if (randomShotY == userFirstShot && randomShotX == userSecondShot) {
+                alert(`WIN`)
+                break
+            }
+            i++
+        } while (i < 5);
+    </script>
+</body>
+
+</html>

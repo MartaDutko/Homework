@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 8. Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати
+        confirm).</p>
+    <script>
+        const rangeMinNumbers = parseInt(prompt(`Вкажіть початок діапазону загаданого числа`))
+        const rangeMaxNumbers = parseInt(prompt(`Вкажіть кінець діапазону загаданого числа`))
+
+        for (let i = 0; i < 3; i++) {
+            let random = rangeMinNumbers + Math.floor(Math.random() * (rangeMaxNumbers - rangeMinNumbers + 1))
+            let confirmAsk = confirm(`Your number ${random}?`)
+            if (confirmAsk == true) {
+                break
+            }
+        }
+    </script>
+</body>
+
+</html>

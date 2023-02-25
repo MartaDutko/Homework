@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h2>Задача 1</h2>
     <p>З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у
@@ -14,22 +16,23 @@
 
     <script>
 
-let firstTask = document.getElementById(`1`)
-// first child
-let firstChildName = prompt(`Введіть ім'я першої дитини`)
-let firstChildCandies = parseInt(prompt(`Введіть кількість цукерок`))
-// second child
-let secondChildName = prompt(`Введіть ім'я першої дитини`)
-let secondChildCandies = parseInt(prompt(`Введіть кількість цукерок`))
+        let firstTask = document.getElementById(`1`)
+        // first child
+        let firstChildName = prompt(`Введіть ім'я першої дитини`)
+        let firstChildCandies = parseInt(prompt(`Введіть кількість цукерок`))
+        // second child
+        let secondChildName = prompt(`Введіть ім'я першої дитини`)
+        let secondChildCandies = parseInt(prompt(`Введіть кількість цукерок`))
 
-if(firstChildCandies > secondChildCandies)
-firstTask.innerHTML = `в ${firstChildName} більше цукерок`
-else if(firstChildCandies < secondChildCandies)
-firstTask.innerHTML = `в ${secondChildName} більше цукерок`
-else if(firstChildCandies == secondChildCandies)
-firstTask.innerHTML = `однакова кількість цукерок`
-else
-console.log('некоректний ввід');
+        if (firstChildCandies > secondChildCandies)
+            firstTask.innerHTML = `в ${firstChildName} більше цукерок`
+        else if (firstChildCandies < secondChildCandies)
+            firstTask.innerHTML = `в ${secondChildName} більше цукерок`
+        else if (firstChildCandies == secondChildCandies)
+            firstTask.innerHTML = `однакова кількість цукерок`
+        else
+            console.log('некоректний ввід');
     </script>
 </body>
+
 </html>

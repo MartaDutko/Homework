@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .border {
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+    <p>Задача 5. Вивести таблицю</p>
+    <script>
+        document.write(`<table class="border"> <tbody>`)
+        let count = 0
+        // row
+        for (let i = 0; i < 3; i++) {
+            document.write(`<tr>`)
+            // column
+            for (let j = 0; j < 3; j++) {
+                document.write(`<td class="border">${++count}</td>`)
+            }
+        }
+        document.write(`</tbody></table>`)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 9. Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати
+        confirm).</p>
+    <script>
+        const rangeMinNumbers = parseInt(prompt(`Вкажіть початок діапазону загаданого числа`))
+        const rangeMaxNumbers = parseInt(prompt(`Вкажіть кінець діапазону загаданого числа`))
+        let i = 0
+        let confirmAsk
+        do {
+            const randomNumber = rangeMinNumbers + Math.floor(Math.random() * (rangeMaxNumbers - rangeMinNumbers) + 1)
+            confirmAsk = confirm(`Your number ${randomNumber}?`)
+            i++
+        }
+        while (confirmAsk !== true)
+    </script>
+</body>
+
+</html>

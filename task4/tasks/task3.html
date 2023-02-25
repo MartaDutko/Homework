@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .border {
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+    <p>Задача 3. Вивести таблицю з одним рядком і 7 стовпцями.</p>
+
+    <script>
+        document.write(`<table class="border"> <tbody> <tr>`)
+        for (let i = 1; i <= 7; i++) {
+            document.write(`<td class="border">${i}</td>`)
+        }
+        document.write(`</tr> </tbody> </table>`)
+    </script>
+</body>
+
+</html>

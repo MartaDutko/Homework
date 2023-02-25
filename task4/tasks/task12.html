@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .border {
+        padding: 10px;
+        text-align: center;
+        background-color: rgb(255 245 157 / 54%);
+    }
+
+    .fruits {
+        margin-top: 20px;
+        background-color: rgb(255 245 157 / 54%);
+        text-align: center;
+        font-size: 100px;
+    }
+
+    .jackpots {
+        padding: 10px;
+        text-align: center;
+        background-color: rgb(255 245 157 / 54%);
+    }
+</style>
+
+<body>
+    <p class="border">Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції
+        вибирається як одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три
+        перших зображення 100 грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн).
+        Використати цикли і switch (для вибору зображення за номером).</p>
+    <div class="border">
+        <h2>Ігровий автомат.</h2>
+        <h3>3 aвокадо = 100</h3>
+        <h3>3 яблука= 200</h3>
+        <h3>3 лимона = 500</h3>
+        <h3>3 горіха = 1000</h3>
+    </div>
+    <div id="fruits" class="fruits">
+    </div>
+    <h3 class="jackpots"></h3>
+
+    <script>
+
+        let fruits = ``
+        for (let i = 0; i < 3; i++) {
+            let randonFruit = 0 + Math.floor(Math.random() * (4 - 0) + 1)
+            switch (randonFruit) {
+                case 1:
+                    fruits += `🥑`
+                    break;
+                case 2:
+                    fruits += `🍏`
+                    break;
+                case 3:
+                    fruits += `🍋`
+                    break;
+                case 4:
+                    fruits += `🌰`
+                    break;
+            }
+        }
+        let jackpotsUser = 0
+        switch (fruits) {
+            case `🥑🥑🥑`:
+                jackpotsUser = 100;
+                break;
+            case `🍏🍏🍏`:
+                jackpotsUser = 200;
+                break;
+            case `🍋🍋🍋`:
+                jackpotsUser = 500;
+                break;
+            case `🌰🌰🌰`:
+                jackpotsUser = 1000;
+                break;
+        }
+        document.getElementById(`fruits`).innerText = fruits;
+        document.querySelector(`.jackpots`).innerText = `Ваш виграш = ${jackpotsUser}`
+    </script>
+</body>
+
+</html>
