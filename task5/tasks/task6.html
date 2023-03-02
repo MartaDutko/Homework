@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tableStyle {
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Задача 6. Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється
+        заданим фіксованим повідомленням).</p>
+
+    <script>
+
+        function createTable(numbRows, numbColums, text = `text`) {
+            // create table
+            document.write(`<table class="tableStyle"><tbody>`)
+            // creste rows
+            for (let i = 0; i < numbRows; i++) {
+                document.write(`<tr>`)
+                // create colums & text
+                for (let j = 0; j < numbColums; j++) {
+                    document.write(`<td class="tableStyle">${text}</td>`)
+                }
+                document.write(`</tr>`)
+            }
+            document.write(`</table> </tbody>`)
+        }
+
+
+        const userNumbersRows = parseInt(prompt(`Введіть кількість рядків таблиці`))
+        const userNumbersColumn = parseInt(prompt(`Введіть кількість стовпців таблиці`))
+
+        // create table in page
+        createTable(userNumbersRows, userNumbersColumn)
+    </script>
+</body>
+
+</html>

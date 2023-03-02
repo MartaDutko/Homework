@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 3. Створити окремі функції, які для 4 чисел знаходять:<br>
+        1)суму;<br>
+        2)добуток;<br>
+        3)середнє арифметичне;<br>
+        4)мінімальне значення.
+    </p>
+
+    <script>
+        function getSum(num1, num2, num3, num4) {
+            return num1 + num2 + num3 + num4
+        }
+        function getProduct(num1, num2, num3, num4) {
+            return num1 * num2 * num3 * num4
+        }
+        function getArithmeticMean(num1, num2, num3, num4) {
+            return (num1 + num2 + num3 + num4) / 4
+        }
+        function getMinimalValue(num1, num2, num3, num4) {
+            let minValue = num1
+            if (minValue > num2) minValue = num2
+            if (minValue > num3) minValue = num3
+            if (minValue > num4) minValue = num4
+            return minValue
+        }
+        
+        const userFirstNumber = parseFloat(prompt(`Введіть 1 число`))
+        const userSecondNumber = parseFloat(prompt(`Введіть 2 число`))
+        const userThirdNumber = parseFloat(prompt(`Введіть 3 число`))
+        const userFourthNumber = parseFloat(prompt(`Введіть 4 число`))
+
+        alert(`Cума чисел ${userFirstNumber},${userSecondNumber},${userThirdNumber},${userFourthNumber} = ${getSum(userFirstNumber, userSecondNumber, userThirdNumber, userFourthNumber)}`)
+        alert(`Добуток чисел ${userFirstNumber},${userSecondNumber},${userThirdNumber},${userFourthNumber} = ${getProduct(userFirstNumber, userSecondNumber, userThirdNumber, userFourthNumber)}`)
+        alert(`Cереднє арифметичне чисел ${userFirstNumber},${userSecondNumber},${userThirdNumber},${userFourthNumber} = ${getArithmeticMean(userFirstNumber, userSecondNumber, userThirdNumber, userFourthNumber)}`)
+        alert(`Мінімальне значення чисел ${userFirstNumber},${userSecondNumber},${userThirdNumber},${userFourthNumber} = ${getMinimalValue(userFirstNumber, userSecondNumber, userThirdNumber, userFourthNumber)}`)
+    </script>
+</body>
+
+</html>

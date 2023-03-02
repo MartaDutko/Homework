@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 2. Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.</p>
+
+    <script>
+        function getWorkDay(num) {
+            switch (num) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    return `Work day`
+                case 6:
+                case 7:
+                    return `Weekend`
+                default:
+                    return `ERROR`
+            }
+        }
+
+        const userNumberDay = parseInt(prompt(`Введіть номер дня щоб дізнатись чи він є робочим`))
+        alert(getWorkDay(userNumberDay))
+    </script>
+</body>
+
+</html>

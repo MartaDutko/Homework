@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 4. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних,
+        кількість додатних, кількість більших за 100.</p>
+
+    <script>
+
+        function getEvenPositiveGreatedHundred(num1, num2, num3) {
+
+            function getEvenNumbers(num1, num2, num3) {
+                let count = 0
+                if (num1 % 2 == 0) count++
+                if (num2 % 2 == 0) count++
+                if (num3 % 2 == 0) count++
+                return count
+            }
+
+            function getPositiveNumbers(num1, num2, num3) {
+                let count = 0
+                if (num1 > 0) count++
+                if (num2 > 0) count++
+                if (num3 > 0) count++
+                return count
+            }
+
+            function getNumbersGreatedHundred(num1, num2, num3) {
+                let count = 0
+                if (num1 > 100) count++
+                if (num2 > 100) count++
+                if (num3 > 100) count++
+                return count
+            }
+
+            alert(`Кількість парних чисел = ${getEvenNumbers(num1, num2, num3)}`)
+            alert(`Кількість додатніх чисел = ${getPositiveNumbers(num1, num2, num3)}`)
+            alert(`Кількість чисел більших за 100 = ${getNumbersGreatedHundred(num1, num2, num3)}`)
+
+        }
+
+        const userNumbers1 = parseFloat(prompt(`Введіть перше число`))
+        const userNumbers2 = parseFloat(prompt(`Введіть друге число`))
+        const userNumbers3 = parseFloat(prompt(`Введіть третє число`))
+        getEvenPositiveGreatedHundred(userNumbers1, userNumbers2, userNumbers3)
+
+    </script>
+</body>
+
+</html>

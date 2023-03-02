@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення
+        для додатних показів температури.</p>
+
+    <script>
+        function getAverageEdditionalIndicators(...num) {
+            let averageValue = 0
+            for (let i = 0; i < num.length; i++) {
+                averageValue += num[i]
+            }
+            return averageValue / num.length
+        }
+
+        alert(getAverageEdditionalIndicators(1, 2, 3, 4, 5, 6))
+    </script>
+</body>
+
+</html>
