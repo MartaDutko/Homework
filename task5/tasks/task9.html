@@ -19,11 +19,10 @@
             for (let i = 0; i < num.length; i++) {
                 if (num[i] < 0) negativeIndicators++
             }
-            alert(`Від’ємних показів температури = ${negativeIndicators}`)
-
+            return negativeIndicators
         }
-        getNegativeTemperatureIndicators(-1, 4, 6, -7)
 
+        alert(`Від’ємних показів температури = ${getNegativeTemperatureIndicators(-1, 4, 6, -7)}`)
     </script>
 </body>
 
