@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які : <br>
+        • починаються на букву «А»;<br>
+        • перша і остання літери співпадають;<br>
+        • складаються з більше ніш 5 символів;</p>
+
+    <script>
+        const carNumbers = ['АС0865СА', 'ВЕ2365СО', 'АА9005КА', 'ВІ1599ОС', 'ІН3377СА', 'БІН3'];
+        // починаються на букву «А»;
+        const carLetter = `А`
+
+        function getCarNamberPlatteLetter(arr, letter) {
+            let newArr = []
+            let count = 0
+            for (let i = 0; i < arr.length; i++) {
+                newArr.push(arr[i][0].toLowerCase())
+            }
+
+            for (let j = 0; j < newArr.length; j++) {
+                if (newArr[j] == letter.toLowerCase())
+                    count++
+            }
+            return count
+        }
+
+        // перша і остання літери співпадають
+        function getSameFirstLastLetter(arr) {
+            let num = 0
+            let count = 0
+            for (let i = 0; i < arr.length; i++) {
+                num = arr[i].length - 1
+                if (arr[i][0] === arr[i][num])
+                    count++
+            }
+            return count
+        }
+
+        // складаються з більше ніш 5 символів
+        function getMoreThanFiveSimbols(arr) {
+            let count = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i].length > 5)
+                    count++
+            }
+            return count
+        }
+
+        // починаються на букву «А»;
+        alert(`Кількість номерів, які починаються на букву ${carLetter} повторюється ${getCarNamberPlatteLetter(carNumbers, carLetter)} разів`);
+
+        // перша і остання літери співпадають
+        alert(`Кількість номерів в яких співпадає перша і остання літера = ${getSameFirstLastLetter(carNumbers)}`)
+
+        // складаються з більше ніш 5 символів
+        alert(`Кількість номерів, яка більша за 5 символів = ${getMoreThanFiveSimbols(carNumbers)}`)
+
+    </script>
+</body>
+
+</html>

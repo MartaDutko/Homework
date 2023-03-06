@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних
+        кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці
+        0, то клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер клітинки, куди
+        стріляє. Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.</p>
+
+    <script>
+
+        const numberOfCells = parseInt(prompt(`Введіть кількість клітинок`))
+        const numberOfShips = parseInt(prompt(`Введіть кількість однопалубних кораблів`))
+
+        // ceil
+        function getNumberOfCells(cels) {
+            let arrOfCells = []
+            for (let i = 0; i < cels; i++) {
+                arrOfCells.push(0)
+            }
+            return arrOfCells
+        }
+
+        // ships
+        function getLocationOfShips(ships, arrCeils) {
+            for (let i = 0; i < ships; i++) {
+                const randomShip = 0 + Math.floor(Math.random() * (numberOfCells + 1 - 1))
+                if (arrCeils[randomShip] === 1) {
+                    i--
+                    continue
+                }
+                else
+                    arrCeils[randomShip] = 1
+            }
+            console.log(arrCeils);
+            return arrCeils
+        }
+
+        // game
+        let count = numberOfShips
+        console.log(count);
+        let locationOfShips = getLocationOfShips(numberOfShips, getNumberOfCells(numberOfCells))
+        while (count > 0) {
+            let userShot = parseInt(prompt(`Залишилось ${count} корабля Введіть номер пострілу`))
+            if (locationOfShips[userShot - 1] === 1) {
+                locationOfShips[userShot - 1] = 0
+                count--
+                alert(`Ви влучили залишилось ${count} кораблів`)
+            }
+            else
+                alert(`Ви не влучили, спробуйте ще раз`)
+        }
+        // check to win
+        if (count === 0)
+            alert(`You win`)
+
+    </script>
+</body>
+
+</html>

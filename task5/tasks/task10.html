@@ -14,14 +14,20 @@
 
     <script>
         function getAverageEdditionalIndicators(...num) {
-            let averageValue = 0
+            let count=0
+            let positiveValues = 0
             for (let i = 0; i < num.length; i++) {
-                averageValue += num[i]
+                if (num[i] < 0)
+                    continue
+                else{
+                    positiveValues += num[i]
+                    count++
+                }
             }
-            return averageValue / num.length
+            return positiveValues / count
         }
 
-        alert(`Середнє значення додатніх показників температури = ${getAverageEdditionalIndicators(1, 2, 3, 4, 5, 6)}`)
+        alert(`Середнє значення додатніх показників температури = ${getAverageEdditionalIndicators(1, -2, -3, 4, 5, 6)}`)
     </script>
 </body>
 

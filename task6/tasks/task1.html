@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 1. Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої
+        категорії він відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і
+        відмінно), трійочник(є хоча би одна трійка)).</p>
+
+    <script>
+        // масив
+        let marksOfSubjects = []
+        // кількість оцінок
+        const numberOfItems = parseInt(prompt(`Введіть кільеість оцінок, які ви хочете ввести`))
+        // перебирання кожної оцінки і пуш в масив
+        for (let i = 1; i <= numberOfItems; i++) {
+            let marks = parseInt(prompt(`Введіть ${i} оцінку від 1 до 5`))
+            marksOfSubjects.push(marks)
+        }
+        // знаходимо середній бал
+        function getAverageScore(arr) {
+            let averageScore = 0
+            for (let i = 0; i < arr.length; i++) {
+                averageScore += arr[i]
+            }
+            return averageScore / arr.length
+        }
+
+        // з’ясувати до якоїкатегорії він відноситься
+        function getCategoryOfStudent(arr) {
+            let res
+            let category
+            array: for (let i = 2; i <= 5; i++) {
+                for (let j = 0; j < arr.length; j++) {
+                    if (i == arr[j]) {
+                        res = i
+                        break array
+                    }
+                }
+            }
+
+            switch (res) {
+                case 2: category = `Двійочник`
+                    break;
+                case 3: category = `Трійочник`
+                    break;
+                case 4:
+                case 5: category = `Хорошист`
+                    break;
+            }
+            return category
+        }
+
+        alert(`Суредній бал з ${marksOfSubjects} оцінок = ${getAverageScore(marksOfSubjects)}`)
+        alert(`Учень відноситься до категорії ${getCategoryOfStudent(marksOfSubjects)}`)
+    </script>
+</body>
+
+</html>

@@ -7,3 +7,15 @@ a{
 a:visited{
     color: black;
 }
+li{
+    list-style-type: none;
+    padding: 15px;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #c0bdbd7d;
+    transition: all 500ms ease; 
+}
+li:hover{
+    padding: 20px;
+    margin-top: 15px;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 5. Дано послідовність оцінок учня. Підрахувати кількість: <br>
+        1) двійок<br>
+        2) кількість хороших оцінок (добре, відмінно);<br>
+        3) кількість оцінок, які нижче середнього.</p>
+
+    <script>
+        function getStudentGrades() {
+            let studentArr = []
+            for (let i = 0; i < 10; i++) {
+                const studentGrades = 2 + Math.floor(Math.random() * (5 - 2 + 1))
+                studentArr.push(studentGrades)
+            }
+            return studentArr
+        }
+        const studentGrades = getStudentGrades()
+
+        //кількість двійок
+        function getScores_2(arr) {
+            let count = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] == 2)
+                    count++
+            }
+            return count
+        }
+
+        // кількість хороших оцінок (добре, відмінно);
+        function getGoodGrades(arr) {
+            let count = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] == 4 || arr[i] == 5)
+                    count++
+            }
+            return count
+        }
+
+        // кількість оцінок, які нижче середнього.
+        function getScoreBelowAverage(arr) {
+            let count = 0
+            let sum = 0
+            let res = 0
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i]
+            }
+            res = sum / arr.length
+            for (let j = 0; j < arr.length; j++) {
+                if (res > arr[j])
+                    count++
+            }
+            return count
+        }
+
+        alert(`Усі оцінки = ${studentGrades}`)
+        //кількість двійок
+        alert(`Кількість двійок = ${getScores_2(studentGrades)}`)
+
+        // кількість хороших оцінок (добре, відмінно);
+        alert(`Кількість хороших оцінок (добре, відмінно) = ${getGoodGrades(studentGrades)}`)
+
+        // кількість оцінок, які нижче середнього.
+        alert(`Kількість оцінок, які нижче середнього = ${getScoreBelowAverage(studentGrades)}`)
+
+    </script>
+</body>
+
+</html>

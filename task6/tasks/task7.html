@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 7. Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за: <br>
+        1)за весь рік;<br>
+        2)у першій половині року;<br>
+        3)у другій половині року;<br>
+        4)за літо;<br>
+        5)за ІІ квартал;<br>
+        6)за парні місяці (з парними номерами);<br>
+        7)за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+    </p>
+
+    <script>
+        function getArr() {
+            let arr = []
+            for (let i = 0; i < 12; i++) {
+                const random = 200 + Math.floor(Math.random() * (1000 - 200 + 1))
+                arr.push(random)
+            }
+            return arr
+        }
+        const paymentsForYear = getArr()
+
+        // 1)за весь рік;
+        function getPaymentForOneYear(arr) {
+            let sum = 0
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i]
+            }
+            return sum
+        }
+        alert(`Cумарнa кількість грошей за весь рік = ${getPaymentForOneYear(paymentsForYear)}`)
+
+        // 2)у першій половині року;
+        function getPaymentForFirstHalfYear(arr) {
+            const halfyear = 6
+            let sum = 0
+            for (let i = 0; i < halfyear; i++) {
+                sum += arr[i]
+            }
+            return sum
+        }
+        alert(`Cумарнa кількість грошей у першій половині року = ${getPaymentForFirstHalfYear(paymentsForYear)}`)
+
+        // 3)у другій половині року;
+        function getPaymentForSecondtHalfYear(arr) {
+            let sum = 0
+            const halfyear = 5
+            for (let i = halfyear; i < 12; i++) {
+                sum += arr[i]
+            }
+            return sum
+        }
+        alert(`Cумарнa кількість грошей у другій половині року= ${getPaymentForSecondtHalfYear(paymentsForYear)}`)
+
+        // 4)за літо;
+        function getPaymentForSammer(arr) {
+            let sum = 0
+            for (let i = 5; i < 8; i++) {
+                sum += arr[i]
+            }
+            return sum
+        }
+        alert(`Cумарнa кількість грошей за літо= ${getPaymentForSammer(paymentsForYear)}`)
+
+        // 5)за ІІ квартал;
+        function getPaymentForSecondQuarter(arr) {
+            let sum = 0
+            for (let i = 3; i < 6; i++) {
+                sum += arr[i]
+            }
+            return sum
+        }
+        alert(`Cумарнa кількість грошей за ІІ квартал= ${getPaymentForSecondQuarter(paymentsForYear)}`)
+
+        // 6)за парні місяці (з парними номерами);
+        function getPaymentForEvenMonths(arr) {
+            let sum = 0
+            for (let i = 1; i < arr.length; i += 2) {
+                sum += arr[i]
+            }
+            return sum
+        }
+        alert(`Cумарнa кількість грошей за парні місяці= ${getPaymentForEvenMonths(paymentsForYear)}`)
+
+        // 7)за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+        function getPaymentForSeasonStart(arr) {
+            let sum = 0
+            for (let i = 2; i <= arr.length; i += 3) {
+                sum += arr[i]
+            }
+            return sum
+        }
+        alert(`Cумарнa кількість грошей за місяці, які є початковими у сезоні (весна, літо, осінь, зима) = ${getPaymentForSeasonStart(paymentsForYear)}`)
+
+    </script>
+</body>
+
+</html>
