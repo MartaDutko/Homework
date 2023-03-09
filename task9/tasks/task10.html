@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    10. Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у
+    грн.
+
+    <script>
+        const size = parseInt(prompt(`кількість елементів масиву`))
+
+        function getRandomNumbers(size) {
+            let arr = []
+            for (let i = 0; i < size; i++) {
+                let random = 1 + Math.floor(Math.random() * (100 - 1 + 1))
+                arr.push(random)
+            }
+            return arr
+        }
+        function getTaxInGrn(arr) {
+            const tax = 0.2
+            return arr.map((element) => Math.round(element * tax))
+        }
+        document.write(getTaxInGrn(getRandomNumbers(size)))
+
+    </script>
+</body>
+
+</html>

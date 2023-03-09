@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>5.Дано масив елементів. Знайти добуток додатних елементів</p>
+
+    <script>
+        const size = parseInt(prompt(`кількість елементів масиву`))
+
+        function getRandomNumbers(size) {
+            let arr = []
+            for (let i = 0; i < size; i++) {
+                let random = -100 + Math.floor(Math.random() * (100 - (-100) + 1))
+                arr.push(random)
+            }
+            return arr
+        }
+
+        function getProductPositiveElements(arr) {
+            let product = 1
+            for (const element of arr) {
+                if (element > 0) product *= element
+            }
+            return product
+        }
+        document.write(`добуток додатніх елементів = ${getProductPositiveElements(
+            getRandomNumbers(size)
+        )}`)
+
+    </script>
+</body>
+
+</html>

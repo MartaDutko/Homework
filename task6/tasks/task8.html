@@ -30,19 +30,13 @@
 
         function getUserWinning(arr) {
             let userNumber = 0
-            let positive = 0
-            let negative = 0
             let res = 0
             do {
                 userNumber = parseInt(prompt(`Введіть число від 1 до 10`))
-                if (!isNaN(userNumber)) {
-                    if (arr[userNumber] < 0)
-                        negative += arr[userNumber - 1]
-                    else
-                        positive += arr[userNumber - 1]
-                }
+                if (!isNaN(userNumber)) 
+                res+=arr[userNumber-1]
             } while (!isNaN(userNumber));
-            res = negative + positive
+
             return res
         }
         alert(`Ваш виграш = ${getUserWinning(winningAmount)}`);

@@ -46,19 +46,23 @@
         }
 
         // кількість оцінок, які нижче середнього.
-        function getScoreBelowAverage(arr) {
+        function getScoreBelowAverage(arr, sumAverage) {
             let count = 0
-            let sum = 0
             let res = 0
-            for (let i = 0; i < arr.length; i++) {
-                sum += arr[i]
-            }
-            res = sum / arr.length
+
+            res = sumAverage / arr.length
             for (let j = 0; j < arr.length; j++) {
                 if (res > arr[j])
                     count++
             }
             return count
+        }
+        function getSumAverage(arr) {
+            let sum = 0
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i]
+            }
+            return sum
         }
 
         alert(`Усі оцінки = ${studentGrades}`)
@@ -69,7 +73,7 @@
         alert(`Кількість хороших оцінок (добре, відмінно) = ${getGoodGrades(studentGrades)}`)
 
         // кількість оцінок, які нижче середнього.
-        alert(`Kількість оцінок, які нижче середнього = ${getScoreBelowAverage(studentGrades)}`)
+        alert(`Kількість оцінок, які нижче середнього = ${getScoreBelowAverage(studentGrades, getSumAverage(studentGrades))}`)
 
     </script>
 </body>

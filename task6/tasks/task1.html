@@ -14,15 +14,20 @@
         відмінно), трійочник(є хоча би одна трійка)).</p>
 
     <script>
-        // масив
-        let marksOfSubjects = []
-        // кількість оцінок
-        const numberOfItems = parseInt(prompt(`Введіть кільеість оцінок, які ви хочете ввести`))
-        // перебирання кожної оцінки і пуш в масив
-        for (let i = 1; i <= numberOfItems; i++) {
-            let marks = parseInt(prompt(`Введіть ${i} оцінку від 1 до 5`))
-            marksOfSubjects.push(marks)
+
+        function getArr() {
+            const numberOfItems = parseInt(prompt(`Введіть кільеість оцінок, які ви хочете ввести`))
+            // масив
+            let marksOfSubjects = []
+            for (let i = 1; i <= numberOfItems; i++) {
+                let marks = parseInt(prompt(`Введіть ${i} оцінку від 1 до 5`))
+                marksOfSubjects.push(marks)
+            }
+            return marksOfSubjects
         }
+        let arrMarks = getArr()
+
+
         // знаходимо середній бал
         function getAverageScore(arr) {
             let averageScore = 0
@@ -36,13 +41,11 @@
         function getCategoryOfStudent(arr) {
             let res
             let category
-            array: for (let i = 2; i <= 5; i++) {
-                for (let j = 0; j < arr.length; j++) {
-                    if (i == arr[j]) {
-                        res = i
-                        break array
-                    }
-                }
+
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === 2) res = 2
+                else if (arr[i] === 3) res = 3
+                else if (arr[i] === 4 || arr[i] === 5) res = 4
             }
 
             switch (res) {
@@ -57,8 +60,8 @@
             return category
         }
 
-        alert(`Суредній бал з ${marksOfSubjects} оцінок = ${getAverageScore(marksOfSubjects)}`)
-        alert(`Учень відноситься до категорії ${getCategoryOfStudent(marksOfSubjects)}`)
+        alert(`Суредній бал з ${arrMarks} оцінок = ${getAverageScore(arrMarks)}`)
+        alert(`Учень відноситься до категорії ${getCategoryOfStudent(arrMarks)}`)
     </script>
 </body>
 

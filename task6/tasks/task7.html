@@ -30,77 +30,29 @@
         }
         const paymentsForYear = getArr()
 
-        // 1)за весь рік;
-        function getPaymentForOneYear(arr) {
+        function getPaymentForMonth(arr, start, end) {
             let sum = 0
-            for (let i = 0; i < arr.length; i++) {
+            for (let i = start; i < end; i++) {
                 sum += arr[i]
             }
             return sum
         }
-        alert(`Cумарнa кількість грошей за весь рік = ${getPaymentForOneYear(paymentsForYear)}`)
+        alert(`Cумарнa кількість грошей за весь рік = ${getPaymentForMonth(paymentsForYear, 0, 12)}`)
+        alert(`Cумарнa кількість грошей у першій половині року = ${getPaymentForMonth(paymentsForYear, 0, 6)}`)
+        alert(`Cумарнa кількість грошей у другій половині року= ${getPaymentForMonth(paymentsForYear, 6, 12)}`)
+        alert(`Cумарнa кількість грошей за літо= ${getPaymentForMonth(paymentsForYear, 5, 8)}`)
 
-        // 2)у першій половині року;
-        function getPaymentForFirstHalfYear(arr) {
-            const halfyear = 6
+        function getPaymentForQuaters(arr, start, end, i) {
             let sum = 0
-            for (let i = 0; i < halfyear; i++) {
+            for (let i = start; i < end; i++) {
                 sum += arr[i]
             }
             return sum
         }
-        alert(`Cумарнa кількість грошей у першій половині року = ${getPaymentForFirstHalfYear(paymentsForYear)}`)
 
-        // 3)у другій половині року;
-        function getPaymentForSecondtHalfYear(arr) {
-            let sum = 0
-            const halfyear = 5
-            for (let i = halfyear; i < 12; i++) {
-                sum += arr[i]
-            }
-            return sum
-        }
-        alert(`Cумарнa кількість грошей у другій половині року= ${getPaymentForSecondtHalfYear(paymentsForYear)}`)
-
-        // 4)за літо;
-        function getPaymentForSammer(arr) {
-            let sum = 0
-            for (let i = 5; i < 8; i++) {
-                sum += arr[i]
-            }
-            return sum
-        }
-        alert(`Cумарнa кількість грошей за літо= ${getPaymentForSammer(paymentsForYear)}`)
-
-        // 5)за ІІ квартал;
-        function getPaymentForSecondQuarter(arr) {
-            let sum = 0
-            for (let i = 3; i < 6; i++) {
-                sum += arr[i]
-            }
-            return sum
-        }
-        alert(`Cумарнa кількість грошей за ІІ квартал= ${getPaymentForSecondQuarter(paymentsForYear)}`)
-
-        // 6)за парні місяці (з парними номерами);
-        function getPaymentForEvenMonths(arr) {
-            let sum = 0
-            for (let i = 1; i < arr.length; i += 2) {
-                sum += arr[i]
-            }
-            return sum
-        }
-        alert(`Cумарнa кількість грошей за парні місяці= ${getPaymentForEvenMonths(paymentsForYear)}`)
-
-        // 7)за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
-        function getPaymentForSeasonStart(arr) {
-            let sum = 0
-            for (let i = 2; i <= arr.length; i += 3) {
-                sum += arr[i]
-            }
-            return sum
-        }
-        alert(`Cумарнa кількість грошей за місяці, які є початковими у сезоні (весна, літо, осінь, зима) = ${getPaymentForSeasonStart(paymentsForYear)}`)
+        alert(`Cумарнa кількість грошей за ІІ квартал= ${getPaymentForQuaters(paymentsForYear, 3, 6, 1)}`)
+        alert(`Cумарнa кількість грошей за парні місяці= ${getPaymentForQuaters(paymentsForYear, 1, 12, 2)}`)
+        alert(`Cумарнa кількість грошей за місяці, які є початковими у сезоні (весна, літо, осінь, зима) = ${getPaymentForQuaters(paymentsForYear, 2, 12, 3)}`)
 
     </script>
 </body>

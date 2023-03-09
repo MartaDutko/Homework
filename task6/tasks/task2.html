@@ -40,7 +40,7 @@
         function getMinimalDayVisitors(arr) {
             let min = arr[0]
             let minimalVisitors = []
-            for (let i = 0; i < arr.length; i++) {
+            for (let i = 1; i < arr.length; i++) {
                 if (arr[i] < min)
                     min = arr[i]
             }
@@ -54,18 +54,18 @@
         // загальну кількість клієнтів у робочі дні
         function getVisitorsForWorkDays(arr) {
             let visitorsForWorkDays = 0
-            for (let i = 0; i < arr.length; i++) {
-                if (i >= 0 && i <= 4)
+            for (let i = 5; i < arr.length; i++) {
                     visitorsForWorkDays += arr[i]
             }
             return visitorsForWorkDays
         }
 
         // загальну кількість днів на вихідних
+
+        
         function getVisitorsForWeekend(arr) {
             let visitorsForWeekend = 0
-            for (let i = 0; i < arr.length; i++) {
-                if (i >= 5 && i <= 6)
+            for (let i = 5; i < arr.length; i++) {
                     visitorsForWeekend += arr[i]
             }
             return visitorsForWeekend

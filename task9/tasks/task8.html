@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>8. Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</p>
+
+    <script>
+        let carNumbers = ["АА1234BB", "ВА12BB1234СВ", "ОА1234BC", "АВC123АР", "ВС1234AРА", "АВ123AB456ТИ", "ВА123МА", "АС12BC34СВ", "АС1B2C3МИ"]
+
+        function filter(arr) {
+            return arr.filter((element) => element[0] === `А`)
+        }
+        document.write(filter(carNumbers))
+
+    </script>
+</body>
+
+</html>

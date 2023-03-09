@@ -21,11 +21,11 @@
             let newArr = []
             let count = 0
             for (let i = 0; i < arr.length; i++) {
-                newArr.push(arr[i].toLowerCase())
+                newArr.push(arr[i])
             }
 
             for (let j = 0; j < newArr.length; j++) {
-                if (name.toLowerCase() === newArr[j])
+                if (name=== newArr[j])
                     count++
             }
             return count

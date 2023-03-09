@@ -43,23 +43,28 @@
             return arrCeils
         }
 
-        // game
-        let count = numberOfShips
-        console.log(count);
+        // виклик функції
         let locationOfShips = getLocationOfShips(numberOfShips, getNumberOfCells(numberOfCells))
-        while (count > 0) {
-            let userShot = parseInt(prompt(`Залишилось ${count} корабля Введіть номер пострілу`))
-            if (locationOfShips[userShot - 1] === 1) {
-                locationOfShips[userShot - 1] = 0
-                count--
-                alert(`Ви влучили залишилось ${count} кораблів`)
+        game(numberOfShips, locationOfShips)
+        // game
+        function game(numberOfShips, locationOfShips) {
+            let count = numberOfShips
+            console.log(count);
+            while (count > 0) {
+                let userShot = parseInt(prompt(`Залишилось ${count} корабля Введіть номер пострілу`))
+                if (locationOfShips[userShot - 1] === 1) {
+                    locationOfShips[userShot - 1] = 0
+                    count--
+                    alert(`Ви влучили залишилось ${count} кораблів`)
+                }
+                else
+                    alert(`Ви не влучили, спробуйте ще раз`)
             }
-            else
-                alert(`Ви не влучили, спробуйте ще раз`)
+            // check to win
+            if (count === 0)
+                alert(`You win`)
         }
-        // check to win
-        if (count === 0)
-            alert(`You win`)
+
 
     </script>
 </body>
