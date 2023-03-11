@@ -33,68 +33,68 @@
 
         // 1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
         let arrGreaterThan_1000 = arrRandomPrices.filter(element => element > 1000)
-        // console.log(arrGreaterThan_1000);
+        console.log(arrGreaterThan_1000);
 
         // 2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
         let arrPositionGreaterThan_1000 = arrRandomPrices.map((element, index) => {
             if (element > 1000) return index
         }).filter(element => element !== undefined)
-        // console.log(arrPositionGreaterThan_1000);
+        console.log(arrPositionGreaterThan_1000);
 
         // 3)Сформувати список з тих цін, які більші за попереднє значення
         let arrPricesHigherPrevios = []
         arrRandomPrices.reduce((preRes, element, index, baseArrRef) => {
             if (element > baseArrRef[index - 1]) arrPricesHigherPrevios.push(element)
         })
-        // console.log(arrPricesHigherPrevios);
+        console.log(arrPricesHigherPrevios);
 
         // 4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
         let maxPrice = arrRandomPrices.reduce((preRes, element, index, BaseArrRef) => (element > preRes) ? preRes = element : preRes)
         let priceInPercent = arrRandomPrices.map((element) => Math.round(element / maxPrice * 100))
-        // console.log(priceInPercent);
+        console.log(priceInPercent);
 
         // 5)Підрахувати кількість змін цін
         let numberOfDiferentNumbers = arrRandomPrices.reduce((preRes, element, index, baseArrRef) => {
             if (element !== baseArrRef[index + 1]) return preRes + 1
             return preRes
         }, 0)
-        // console.log(numberOfDiferentNumbers);
+        console.log(numberOfDiferentNumbers);
 
         // 6)Визначити, чи є ціна, що менше 1000
         let priceIsLower_1000 = arrRandomPrices.some(element => element < 1000)
-        // console.log(priceIsLower_1000);
+        console.log(priceIsLower_1000);
 
         // 7)Визначати, чи усі ціни більше за 1000
         let pricesIsHiger__1000 = arrRandomPrices.every(element => element > 1000)
-        // console.log(pricesIsHiger__1000);
+        console.log(pricesIsHiger__1000);
 
         // 8)Підрахувати кількість цін, що більше за 1000
         let numberPriceGreatedThan__1000 = arrRandomPrices.filter(element => element > 1000).length
-        // console.log(numberPriceGreatedThan__1000);
+        console.log(numberPriceGreatedThan__1000);
 
         // 9)Підрахувати суму цін, що більше за 1000
         let sumNumberPriceGreatedThan__1000 = arrRandomPrices.filter(element => element > 1000).reduce((preRes, element) => preRes + element)
-        // console.log(sumNumberPriceGreatedThan__1000);
+        console.log(sumNumberPriceGreatedThan__1000);
 
         // 10)Знайти першу ціну, що більше за 1000
         let firstPriceLower__1000 = arrRandomPrices.find(element => element > 1000)
-        // console.log(firstPriceLower__1000);
+        console.log(firstPriceLower__1000);
 
         // 10)Знайти першу ціну, що більше за 1000
         let firstPriceLarger__1000 = arrRandomPrices.find(element => element > 1000)
-        // console.log(firstPriceLarger__1000);
+        console.log(firstPriceLarger__1000);
 
         // 11)Знайти індекс першої ціни, що більше за 1000
         let firstPriceIndexLower__1000 = arrRandomPrices.findIndex((element, index) => element > 1000)
-        // console.log(firstPriceIndexLower__1000);
+        console.log(firstPriceIndexLower__1000);
 
         // 12)Знайти останню ціну, що більше за 1000
         let lastPriceLarger__1000 = arrRandomPrices.findLast(element => element > 1000)
-        // console.log(lastPriceLarger__1000);
+        console.log(lastPriceLarger__1000);
 
         // 13)Знайти індекс останньої ціни, що більше за 1000
         let lastPriceIndexLower__1000 = arrRandomPrices.findLastIndex(element => element > 1000)
-        // console.log(lastPriceIndexLower__1000);
+        console.log(lastPriceIndexLower__1000);
 
     </script>
 
