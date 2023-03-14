@@ -36,9 +36,11 @@
         console.log(arrGreaterThan_1000);
 
         // 2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
-        let arrPositionGreaterThan_1000 = arrRandomPrices.map((element, index) => {
-            if (element > 1000) return index
-        }).filter(element => element !== undefined)
+        let arrPositionGreaterThan_1000 = arrRandomPrices.reduce((preRes, element, index, baseArrRef) => {
+            if (element > 1000) return [...preRes, index]
+            return preRes
+        }
+            , [])
         console.log(arrPositionGreaterThan_1000);
 
         // 3)Сформувати список з тих цін, які більші за попереднє значення
