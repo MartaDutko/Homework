@@ -55,8 +55,9 @@
 
         // 5)Підрахувати кількість змін цін
         let numberOfDiferentNumbers = arrRandomPrices.reduce((preRes, element, index, baseArrRef) => {
-            if (element !== baseArrRef[index + 1]) return preRes + 1
-            return preRes
+            if (index === baseArrRef.length - 1) return preRes;
+            if (element !== baseArrRef[index + 1]) return preRes + 1;
+            return preRes;
         }, 0)
         console.log(numberOfDiferentNumbers);
 
