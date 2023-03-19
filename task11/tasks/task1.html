@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 1. Знайти суми елементів у вказаній області</p>
+
+    <script>
+
+        let testArr = [
+            [1, 1, 2, 2],
+            [1, 1, 2, 2],
+            [2, 2, 1, 1],
+            [2, 2, 1, 1]
+        ]
+        console.log(testArr);
+
+        function getMiddle(arr) {
+            const middleOfRow = Math.floor(arr.length / 2)
+            let middleOfColumn = 0
+            for (let row = 0; row < middleOfRow; row++) {
+                middleOfColumn = Math.floor(arr[row].length / 2)
+            }
+            return [middleOfRow, middleOfColumn]
+        }
+        // масив з серединами масиву
+        const middleOfArr = getMiddle(testArr)
+        const middleRow = middleOfArr[0]
+        const middleColumn = middleOfArr[1]
+
+        // ==========1=============
+        function getSumFirstSquare(testArr, middleRow, middleColumn) {
+            let sum = 0
+            for (let row = 0; row < middleRow; row++) {
+                for (let column = 0; column < middleColumn; column++) {
+                    sum += testArr[row][column]
+                }
+            }
+            return sum
+        }
+        // console.log(getSumFirstSquare(testArr, middleRow, middleColumn));
+
+        // ==========2=============
+        function getSumSecondSquare(testArr, middleRow, middleColumn) {
+            let sum = 0
+            for (let row = 0; row < middleRow; row++) {
+                for (let column = middleColumn; column < testArr[row].length; column++) {
+                    sum += testArr[row][column]
+                }
+            }
+            return sum
+        }
+        // console.log(getSumSecondSquare(testArr, middleRow, middleColumn))
+
+        // ==========3=============
+        function getSumThirdSquare(testArr, middleRow, middleColumn) {
+            let sum = 0
+            for (let row = middleRow; row < testArr.length; row++) {
+                for (let column = 0; column < middleColumn; column++) {
+                    sum += testArr[row][column]
+                }
+            }
+            return sum
+        }
+        // console.log(getSumThirdSquare(testArr, middleRow, middleColumn));
+
+        // ==========4=============
+        function getSumFourthSquare(testArr, middleRow, middleColumn) {
+            let sum = 0
+            for (let row = middleRow; row < testArr.length; row++) {
+                for (let column = middleColumn; column < testArr[row].length; column++) {
+                    sum += testArr[row][column]
+                }
+            }
+            return sum
+        }
+        // console.log(getSumFourthSquare(testArr, middleRow, middleColumn));
+
+
+        // 5) Суму парних рядків
+        function getSumEvenRows(testArr) {
+            let sum = 0
+            for (let row = 0; row < testArr.length; row++) {
+                if (row % 2 == 0) {
+                    for (let column = 0; column < testArr[row].length; column++) {
+                        sum += testArr[row][column]
+                    }
+                }
+            }
+            return sum
+        }
+        // console.log(getSumEvenRows(testArr));
+
+        // 6) Суму непарних стовпців
+        function getSumOddRows(testArr) {
+            let sum = 0
+            for (let row = 0; row < testArr.length; row++) {
+                if (row % 2 !== 0) {
+                    for (let column = 0; column < testArr[row].length; column++) {
+                        sum += testArr[row][column]
+                    }
+                }
+            }
+            return sum
+        }
+        // console.log(getSumOddRows(testArr));
+
+        // 7) У парних рядках – непарні стовпці, у непарних – парні.
+        function getSumEvenRowsOddColumns(testArr) {
+            let sum = 0
+            for (let row = 0; row < testArr.length; row++) {
+                if (row % 2 == 0) {
+                    for (let column = 0; column < testArr[row].length; column++) {
+                        if (column % 2 !== 0) {
+                            sum += testArr[row][column]
+                        }
+                    }
+                }
+                else {
+                    for (let column = 0; column < testArr[row].length; column++) {
+                        if (column % 2 === 0) {
+                            sum += testArr[row][column]
+                        }
+                    }
+                }
+            }
+            return sum
+        }
+        // console.log(getSumEvenRowsOddColumns(testArr));
+
+    </script>
+</body>
+
+</html>

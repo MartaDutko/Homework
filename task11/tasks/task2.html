@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 2. Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</p>
+
+    <script>
+        // 1) загальний прибуток кожного масиву за тиждень;
+        // функція рандомного числа
+        function getRandomNumber(minNum, maxNum) {
+            return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+        }
+        // console.log(getRandomNumber(1,10));
+
+        // функція для формування одновимірного масиву
+        function generateRandomColumn(columnLenth, minNum, maxNum) {
+            let arr = []
+            for (let i = 0; i < columnLenth; i++) {
+                arr.push(getRandomNumber(minNum, maxNum))
+            }
+            return arr
+        }
+        // console.log(getArray(10,1,10));
+
+        // функці для формування двовимірного маисву
+        function generateRandomTable(tableLenth, columnLenth, minNum, maxNum) {
+            let newArr = []
+            for (let row = 0; row < tableLenth; row++) {
+                newArr.push(generateRandomColumn(columnLenth, minNum, maxNum))
+            }
+            return newArr
+        }
+        // тестовий масив
+        const weeklyProfitOfStores = generateRandomTable(5, 7, 100, 2000)
+
+        // Задачі
+
+        // 1) загальний прибуток кожного масиву за тиждень;
+        function getProfitOfEachMagazineForWeek(arr) {
+            let sum = []
+            for (let row = 0; row < arr.length; row++) {
+                let magazineRes = 0
+                for (let column = 0; column < arr[row].length; column++) {
+                    magazineRes += arr[row][column]
+                }
+                sum.push(magazineRes)
+            }
+            return sum
+        }
+        // console.log(getProfitOfEachMagazineForWeek(weeklyProfitOfStores));
+
+        // 2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.)
+        function getProfitOfMagazinesByDay(arr) {
+            let totalSum = []
+            for (let day = 0; day < 7; day++) {
+                let sum = 0
+                for (let magazine = 0; magazine < arr.length; magazine++) {
+                    sum += arr[magazine][day]
+                }
+                totalSum.push(sum)
+            }
+            return totalSum
+        }
+        // console.log(getProfitOfMagazinesByDay(weeklyProfitOfStores));
+
+        // 3) загальний прибуток за робочі дні
+        function getProfitOfMagazinesForWorkDay(arr) {
+            let sum = 0
+            const workDays = 5
+            for (let magazine = 0; magazine < arr.length; magazine++) {
+                for (let day = 0; day < workDays; day++) {
+                    sum += arr[magazine][day]
+                }
+            }
+            return sum
+        }
+        // console.log(getProfitOfMagazinesForWorkDay(weeklyProfitOfStores));
+
+        // 4) загальний прибуток за вихідні дні
+        function getProfitOfMagazinesForWeekends(arr) {
+            let sum = 0
+            for (let magazine = 0; magazine < arr.length; magazine++) {
+                for (let day = 5; day < arr[magazine].length; day++) {
+                    sum += arr[magazine][day]
+                }
+            }
+            return sum
+        }
+        // console.log(getProfitOfMagazinesForWeekends(weeklyProfitOfStores));
+
+        // 5) максимальний прибуток за середу
+        function getMaximumProfitForWednesday(arr) {
+            let max = arr[0][2]
+            for (let magazine = 1; magazine < arr.length; magazine++) {
+                for (let day = 2; day < 3; day++) {
+                    if (max < arr[magazine][day]) max = arr[magazine][day]
+                }
+            }
+            return max
+        }
+        // console.log(getSum(weeklyProfitOfStores));
+
+        // 6) сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+        function getValuesGreaterThan_200(arr) {
+            let res = []
+            for (let magazine = 0; magazine < arr.length; magazine++) {
+                for (let day = 0; day < arr[magazine].length; day++) {
+                    if (arr[magazine][day] > 200) res.push(arr[magazine][day])
+                }
+            }
+            return res
+        }
+        // console.log(getValuesGreaterThan_200(weeklyProfitOfStores));
+
+        // 7) відсортувати кожен тиждень за зростанням
+        let sortProfit
+        for (let magazine = 0; magazine < weeklyProfitOfStores.length; magazine++) {
+            sortProfit = weeklyProfitOfStores[magazine].sort((a, b) => a - b)
+        // console.log(sortProfit);
+        }
+
+        // 8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при
+        // порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+        function getMaxNumber(arr) {
+            let maxNumber = arr[0]
+            for (let day = 1; day < arr.length; day++) {
+                if (maxNumber < arr[day]) maxNumber = arr[day]
+            }
+            return maxNumber
+        }
+        function sortItemsByDecay(arr) {
+            return arr.sort((d1, d2) => getMaxNumber(d2) - getMaxNumber(d1))
+        }
+        // console.log(sortItemsByDecay(weeklyProfitOfStores));
+
+        // 9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба
+        // знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів
+        // повинен іти раніше).
+        function getSum(arr) {
+            let sum = 0
+            for (let day = 0; day < arr.length; day++) {
+                sum += arr[day]
+            }
+            return sum
+        }
+        function getArrDscendingOrderOfTotalAmount(arr) {
+            return arr.sort((w1, w2) => getSum(w2) - getSum(w1))
+        }
+        // console.log(getArrDscendingOrderOfTotalAmount(weeklyProfitOfStores));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 3. Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів.
+        Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у
+        користувача не закінчаться снаряди.</p>
+
+    <script>
+
+        function getrandomNumber() {
+            return 0 + Math.floor(Math.random() * (6 + 0 - 1))
+        }
+        //одновимірний масив заповнений 0
+        function fillingPlayground() {
+            let arr = []
+            for (let i = 0; i < 6; i++) {
+                arr.push(0)
+            }
+            return arr
+        }
+
+        //двовимірний масив заповнений 0 
+        function getPlayground() {
+            let ships = []
+            for (let ship = 0; ship <= 6; ship++) {
+                ships.push(fillingPlayground())
+            }
+            return ships
+        }
+        let playground = getPlayground()
+
+        // формування гри
+        function game(playground) {
+            let i = 0
+            while (i < 5) {
+                let shipIndexRow = getrandomNumber()
+                let shipIndexColumn = getrandomNumber()
+                if (playground[shipIndexRow][shipIndexColumn] !== 1) {
+                    playground[shipIndexRow][shipIndexColumn] = 1
+                    i++
+                }
+            }
+            return playground
+        }
+        let gameField = game(playground)
+
+        // test
+        // console.log(gameField[0]);
+        // console.log(gameField[1]);
+        // console.log(gameField[2]);
+        // console.log(gameField[3]);
+        // console.log(gameField[4]);
+        // console.log(gameField[5]);
+        // console.log(gameField[6]);
+        // 
+
+        // гра з гравцем
+        function userGame(arr) {
+            let ships = 5
+            let userAmunition = 7
+            do {
+                let shotRowsNumber = parseInt(prompt('введіть кординати рядка 1-6')) - 1
+                let shotColumnsNumber = parseInt(prompt('введіть кординати колонки 1-6')) - 1
+                if (arr[shotRowsNumber][shotColumnsNumber] === 1) {
+                    alert(`Ви влучили`)
+                    arr[shotRowsNumber][shotColumnsNumber] = 0
+                    ships--
+                }
+                else alert(`Ви не влучили`)
+                userAmunition--
+                if (userAmunition === 0) break
+            } while (ships !== 0);
+            if (ships === 0) alert(`win`)
+        }
+        // виклик гри
+        userGame(gameField)
+
+    </script>
+</body>
+
+</html>
