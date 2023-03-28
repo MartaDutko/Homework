@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 4. З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами
+        видавати по одну букву наперед заданого слова. З використанням нього розробити гру «Прекладач». Виводимо для
+        користувача опис цього слова і по одну букву користувач вводить переклад цього слова. Підрахувати кількість
+        вгаданих букв.</p>
+
+    <script>
+        function makeTranslator() {
+            let gessWord = 'google'
+            let count = 0
+            let i = 0
+            return function (letter) {
+                if (letter === gessWord[i]) count++
+                i++
+                if (count === gessWord.length) return (`you gess ${count}`);
+                return count
+            }
+        }
+
+        let translator = makeTranslator()
+        for (let i = 0; i < 6; i++) {
+            console.log(translator((prompt('пошукова система'))));
+        }
+
+    </script>
+</body>
+
+</html>

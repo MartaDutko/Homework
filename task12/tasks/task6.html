@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 6. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я
+        довжиною 5 символів і під яким індексом.</p>
+
+    <script>
+        let names = [
+            'John',
+            'Paul',
+            'Olga',
+            'Andrew',
+            'Abrams',
+            'Peter',
+            'Tina',
+            'Olga',
+            'Jack',
+            'Peter',
+        ]
+
+        // сортування масиву імен виключенням
+        function insertSort(names) {
+            for (let k = 1; k < names.length; k++) {
+                const carentValue = names[k];
+                let i = k - 1
+                while (i >= 0 && names[i] > carentValue) {
+                    names[i + 1] = names[i]
+                    i--
+                }
+                names[i + 1] = carentValue
+            }
+            return names
+        }
+        let sortName = insertSort(names)
+        console.log(sortName);
+
+        function bi(names, serchElement) {
+            let start = 0
+            let end = names.length - 1
+            while (start <= end) {
+
+                let middle = Math.floor((start + end) / 2)
+                if (names[middle].length === serchElement) return middle
+                if (names[middle].length < serchElement) start = middle + 1
+                if (names[middle].length > serchElement) end = middle - 1
+            }
+            return false
+        }
+        console.log(bi(sortName, 5));
+
+    </script>
+</body>
+
+</html>

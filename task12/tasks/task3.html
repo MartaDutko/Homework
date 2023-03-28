@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 3. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування включеннями.
+    </p>
+
+    <script>
+        function getRandomNumber() {
+            return 1 + Math.floor(Math.random() * (100 + 1 - 1))
+        }
+
+        function getRandomArray() {
+            let newArr = []
+            for (let i = 0; i < 30; i++) {
+                let randomArray = getRandomNumber()
+                newArr.push(randomArray)
+            }
+            return newArr
+        }
+        let arr = getRandomArray()
+
+        function insertSort(arr) {
+            let count = 0
+            console.log(count);
+
+            for (let k = 1; k < arr.length; k++) {
+                const carentValue = arr[k];
+                console.log(carentValue);
+
+                let i = k - 1
+                console.log(i);
+                while (i >= 0 && arr[i] > carentValue) {
+                    console.log(arr[i]);
+                    arr[i + 1] = arr[i]
+                    count++
+                    i--
+                    console.log(i);
+                }
+                console.log(arr[i + 1]);
+                arr[i + 1] = carentValue
+            }
+            return [arr, count]
+        }
+        console.log(insertSort(arr));
+
+    </script>
+</body>
+
+</html>

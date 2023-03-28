@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 5. Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і
+        робиться перевірка.</p>
+
+    <script>
+
+        function randomNumber() {
+            return 1 + Math.floor(Math.random() * (100 - 1 + 1))
+        }
+
+        function user(us1, us2) {
+            setTimeout(() => {
+                let userRes = parseInt(prompt(`${us1} + ${us2} = ?`))
+                if (userRes === us1 + us2) {
+                    console.log(`true`);
+                }
+                else {
+                    console.log(`false`);
+                }
+                user(randomNumber(), randomNumber())
+            }, 10000)
+        }
+        user(randomNumber(), randomNumber())
+
+    </script>
+
+
+</body>
+
+</html>

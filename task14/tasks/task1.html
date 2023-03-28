@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p> Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями <br>
+        ----- Властивості ------<br>
+        назва компанії на час розробки (назву періодично змінюють)
+        власник компанії
+        споснсори (масив спонсорів)
+        * прізвище спонсора
+        * ім’я спонсора
+        * сума вкладень спонсора
+        рік випуску
+        вартість сайту<br>
+        Знайти:<br>
+        1) загальну вартість усіх сайтів <br>
+        2) кількість сайтів, що було зроблено між 2000 та 2009 рр.<br>
+        3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000<br>
+        4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)<br>
+        5) знайти рік, коли прибуток був найбільшим<br>
+        6) упорядкувати список за спаданням прибутку<br>
+        7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000</p>
+
+    <script>
+        let companyWebsite = [
+            {
+                tittle: `Tittle`,
+                owners: `Ivanow`,
+                sponsors: [
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 3000
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 2000
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 4000
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 10000
+                    }
+                ],
+                yearOfRealeze: 2010,
+                cost: 2000
+            },
+            {
+                tittle: `Tittle`,
+                owners: `Petrov`,
+                sponsors: [
+                    {
+                        surname: `Ivanov`,
+                        name: `Ivan`,
+                        amountInvestments: 3000
+                    },
+                    {
+                        surname: `Ivanov`,
+                        name: `Ivan`,
+                        amountInvestments: 2000
+                    },
+                    {
+                        surname: `Ivanov`,
+                        name: `Ivan`,
+                        amountInvestments: 40000
+                    },
+                    {
+                        surname: `Ivanov`,
+                        name: `Ivan`,
+                        amountInvestments: 1000
+                    }
+                ],
+                yearOfRealeze: 2015,
+                cost: 4000
+            },
+            {
+                tittle: `Tittle`,
+                owners: `Pavlov`,
+                sponsors: [
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 3000
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 2000
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 4000
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 1000
+                    }
+                ],
+                yearOfRealeze: 2003,
+                cost: 2000
+            },
+            {
+                tittle: `Tittle`,
+                owners: `Ivanow`,
+                sponsors: [
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 20000
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 2000
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 100020
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 10000
+                    }
+                ],
+                yearOfRealeze: 2020,
+                cost: 3000
+            },
+            {
+                tittle: `Tittle`,
+                owners: `Ivanow`,
+                sponsors: [
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 3000
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 100040
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 4000
+                    },
+                    {
+                        surname: `Petrov`,
+                        name: `Petro`,
+                        amountInvestments: 100001
+                    }
+                ],
+                yearOfRealeze: 2023,
+                cost: 10000
+            }
+        ]
+
+        // 1) загальну вартість усіх сайтів 
+        let totalPrise = companyWebsite.reduce((preRes, website) => website.cost + preRes
+            , 0)
+        // console.log(totalPrise);
+
+        // 2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+        let quantityWebsiteBeetween_2000_2009 = companyWebsite.reduce((prerRes, website) => {
+            if (website.yearOfRealeze > 2000 && website.yearOfRealeze < 2009) prerRes++
+            return prerRes
+        }
+            , 0)
+        // console.log(quantityWebsiteBeetween_2000_2009);
+
+        // 3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+        let sponsorsInvestmentsMore_100000 = 0
+        for (const object of companyWebsite) {
+            for (const sponsor of object.sponsors) {
+                if (sponsor.amountInvestments > 100000) {
+                    sponsorsInvestmentsMore_100000++
+                    break
+                }
+            }
+        }
+        // console.log(sponsorsInvestmentsMore_100000);
+
+        // 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+        let sponsorsList = []
+        for (const object of companyWebsite) {
+            for (const sponsor of object.sponsors) {
+                sponsorsList.push(sponsor)
+            }
+        }
+        // console.log(sponsorsList);
+
+        // 5) знайти рік, коли прибуток був найбільшим
+        let yearHighestProfit = companyWebsite.reduce((preRes, website) => {
+            if (website.yearOfRealeze > preRes) preRes = website.yearOfRealeze
+            return preRes
+        }
+            , 0)
+        // console.log(yearHighestProfit);
+
+        // 6) упорядкувати список за спаданням прибутку
+        function sortByCost(companyWebsite) {
+            for (let key = 1; key < companyWebsite.length; key++) {
+                const currentValue = companyWebsite[key];
+                let i = key - 1
+                while (i >= 0 && companyWebsite[i].cost > currentValue.cost) {
+                    companyWebsite[i + 1] = companyWebsite[i]
+                    i = i - 1
+                }
+                companyWebsite[i + 1] = currentValue
+            }
+        }
+        // sortByCost(companyWebsite)
+        // console.log(companyWebsite);
+
+        // 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+        let websiteCostTo_10000 = companyWebsite.filter((el) => el.cost < 10000)
+        let websiteCostMore_10000 = companyWebsite.filter((el) => el.cost >= 10000)
+
+        // console.log(websiteCostTo_10000);
+        // console.log(websiteCostMore_10000);
+
+    </script>
+
+</body>
+
+</html>

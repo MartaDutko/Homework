@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування бульбашкою
+    </p>
+
+    <script>
+        function getRandomNumber() {
+            return 1 + Math.floor(Math.random() * (100 + 1 - 1))
+        }
+
+        function getRandomArray() {
+            let newArr = []
+            for (let i = 0; i < 30; i++) {
+                let randomArray = getRandomNumber()
+                newArr.push(randomArray)
+            }
+            return newArr
+        }
+        let arr = getRandomArray()
+
+        function bableSort(arr) {
+            let count = 0
+            let change
+            do {
+                change = false
+                for (let i = 1; i < arr.length; i++) {
+                    if (arr[i - 1] > arr[i]) {
+                        [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]
+                        count++
+                        change = true
+                    }
+                }
+            } while (change);
+            return [arr, count]
+        }
+        console.log(bableSort(arr));
+
+    </script>
+</body>
+
+</html>

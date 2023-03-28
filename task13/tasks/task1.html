@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 1. Нехай x0 = 1, x1= xi-1+2i, де i=1,2...... Визначити . Розв’язати з використанням рекурсивних і
+        нерекурсивних алгоритмів</p>
+
+    <script>
+        // не рекурсивний
+        function recursive(x) {
+            if (x === 0) return 1
+            else {
+                let x_i_1 = 1
+                for (let i = 0; i <= x; i++) {
+                    x_i_1 = x_i_1 + 2 * i
+                }
+                return x_i_1
+            }
+        }
+        console.log(recursive(10));
+
+        // рекурсивний
+        function notRecursive(x) {
+            if (x === 0) return 1
+            else {
+                return notRecursive(x - 1) + (2 * x)
+            }
+        }
+        console.log(notRecursive(10));
+
+    </script>
+</body>
+
+</html>
