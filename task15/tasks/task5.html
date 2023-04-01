@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 5. Розробити клас «Керівник танців»</p>
+    <script>
+
+        class DanceDirector {
+            constructor(girlsNames, boysNames) {
+                this.girlsNames = girlsNames
+                this.boysNames = boysNames
+            }
+
+            // Метод випадкового вибору імені хлопця
+            getRandomBoyName() {
+                return 0 + Math.floor(Math.random() * this.boysNames.length)
+            }
+
+            // Метод випадкового вибору імені дівчини
+            getRandomGirlName() {
+                return 0 + Math.floor(Math.random() * this.girlsNames.length)
+            }
+
+            // Метод виведення пари для танців
+            getCoupleForDancing() {
+                console.log(`Пара для танців ${this.boysNames[this.getRandomBoyName()]} i ${this.girlsNames[this.getRandomGirlName()]}`);
+            }
+            // Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+            run() {
+                setInterval(() => {
+                    this.getCoupleForDancing()
+                }, 5000)
+            }
+        }
+
+        const girlsNames = ["Emily", "Anna", "Amanda", "Sarah", "Mary"]
+        const boysNames = ["John", "Michael", "David", "William", "Andrew"]
+        let danceCouple = new DanceDirector(girlsNames, boysNames)
+        danceCouple.run()
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 2. Створити об’єкт «Авто». </p>
+    <script>
+        class Auto {
+            constructor(brand, tankSize, numLitersAvaible, numSeats, numPassengers) {
+                this.brand = brand
+                this.tankSize = tankSize
+                this.numLitersAvaible = numLitersAvaible
+                this.numSeats = numSeats
+                this.numPassengers = numPassengers
+            }
+            // Заправка на вказану кількість літрів
+            refuel(liters) {
+                if (this.tankSize < this.numLitersAvaible + liters)
+                    throw new Error(`В бак не поміститься ${liters} літрів, його об'єм ${this.tankSize}, а машинa заправлена на ${this.numLitersAvaible} літрів`)
+                return this.numLitersAvaible += liters
+            }
+            // Виведення кількості пасажирів
+            toString() {
+                return `Кількість пасажирів: ${this.numPassengers}`
+            }
+            // Додавання пасажирів
+            addPassengers(num) {
+                if (this.numSeats <= num)
+                    throw new Error(`В машині тільки ${this.numSeats} місць`)
+                return this.numPassengers += num
+            }
+            // Висадка пасажирів
+            disembarkationPassengers(num) {
+                if ((this.numPassengers - num) < 0)
+                    throw new Error('Hемає більше пасажирів')
+                if (this.numPassengers === 0)
+                    throw new Error('В машині немає більше пасажирів')
+                return this.numPassengers -= num
+            }
+        }
+
+        let car = new Auto('opel', 70, 50, 4, 1)
+        car.refuel(10)
+        car.addPassengers(2)
+        car.disembarkationPassengers(1)
+        console.log(car);
+    </script>
+</body>
+
+</html>

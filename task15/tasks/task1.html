@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.</p>
+
+    <script>
+        // 1 варіант
+        // const shotingRange = {
+        //     fieldWithRabbits: [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+        //     shotRabbit: function (shot) {
+        //         if (this.fieldWithRabbits[shot] === 1) {
+        //             alert(`you hit`)
+        //             this.fieldWithRabbits[shot] = 0
+        //         }
+        //         else
+        //             alert(`you don't hit`)
+        //     },
+        //     showGameFields: function () {
+        //         console.table(this.fieldWithRabbits)
+        //     }
+        // }
+
+        // shotingRange.shotRabbit(2)
+        // shotingRange.showGameFields()
+        // shotingRange.shotRabbit(0)
+
+
+        // 2 варіант
+        function ShootingRange(lenthField, shot) {
+            this.fieldWithRabbits = this.randomField(lenthField)
+            this.shots = this.shotRabbit(shot)
+        }
+        ShootingRange.prototype.randomField = function (lenthField) {
+            let arr = []
+            for (let i = 0; i < lenthField; i++) {
+                let rand = 0 + Math.floor(Math.random() * (1 - 0 + 1))
+                arr.push(rand)
+
+            }
+            return arr
+        }
+
+        ShootingRange.prototype.shotRabbit = function (shot) {
+            if (this.fieldWithRabbits[shot] === 1) {
+                console.log(`you hit`)
+                // this.fieldWithRabbits[shot] = 0
+            }
+            console.log(`you don't hit`)
+        }
+        ShootingRange.prototype.showGameFild = function () {
+            console.table(this.fieldWithRabbits)
+        }
+
+        let shotRange = new ShootingRange(10, 0)
+        shotRange.showGameFild()
+
+    </script>
+</body>
+
+</html>

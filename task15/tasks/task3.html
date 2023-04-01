@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 3. Розробити клас MultChecker для перевірки таблиці множення </p>
+    <script>
+        class MultChecker {
+            constructor(userNumber) {
+                this.userNumber = userNumber
+                this.right = 0
+                this.wrong = 0
+                this.randomValue = 0
+            }
+            // Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+            getRandomExample() {
+                this.randomValue = (1 + Math.floor(Math.random() * (10 - 1 + 1)))
+                return `Чому дорівнює добуток? ${this.userNumber} * ${this.randomValue}`
+            }
+            // Перевірка правильності вказаної відповіді
+            correctnessCheck(userAnsver) {
+                let res = this.userNumber * this.randomValue
+                if (userAnsver === res) {
+                    this.right++
+                    return 'Правильно'
+                }
+                else {
+                    this.wrong++
+                    return 'Не правильно'
+                }
+            }
+
+            // render - виведення інформації про тестування на екран
+            render() {
+                console.log(`Таблиця множення на ${this.userNumber}`);
+                console.log(`Правильних відповідей ${this.right}`);
+                console.log(`Не правильних відповідей ${this.wrong}`);
+            }
+        }
+        // test
+        let i = confirm(`Хочете первірити таблицю множення`)
+        while (i) {
+            let userNumber = parseInt(prompt('Введіть число на,яке хочете перевірити таблицю множення'))
+            let userMultiplicationTable = new MultChecker(userNumber)
+            let userAsk = parseInt(prompt(`${userMultiplicationTable.getRandomExample()}`))
+            alert(userMultiplicationTable.correctnessCheck(userAsk))
+            i = confirm(`Продовжуємо`)
+        }
+        userMultiplicationTable.render()
+
+    </script>
+</body>
+
+</html>

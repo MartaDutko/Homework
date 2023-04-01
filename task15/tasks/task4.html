@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Задача 4. Розробити клас Baner</p>
+    <script>
+        class Baner {
+            constructor(arrImg) {
+                this.arrImg = arrImg
+            }
+            // Метод випадкового вибору об’єкта (графічного зображення та посилання)
+            randomObjectSelection() {
+                return 0 + Math.floor(Math.random() * this.arrImg.length)
+            }
+            // Метод виведення випадкового банера
+            showRandomBanner() {
+                let res = this.arrImg[this.randomObjectSelection()]
+                document.write(`<a href="${res.link}"><img src="${res.img}"></a>`)
+            }
+        }
+
+        const arrImage = [
+            {
+                img: "./img/1.jpeg",
+                link: "https://unsplash.com/photos/gYCMiZp-A7E"
+            },
+            {
+                img: "./img/2.jpeg",
+                link: "https://unsplash.com/photos/6ArTTluciuA"
+            },
+            {
+                img: "./img/3.jpeg",
+                link: "https://unsplash.com/photos/EX3gFC6eP4c"
+            }
+        ]
+
+        let newBaner = new Baner(arrImage)
+        newBaner.showRandomBanner()
+    </script>
+</body>
+
+</html>
