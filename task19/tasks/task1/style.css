@@ -1,0 +1,54 @@
+body{
+    width: 100vw;
+    display: flex;
+
+}
+p{
+    margin: 0;
+}
+
+
+.mainBlock {
+    display: flex;
+    padding: 5%;
+    gap: 5%;
+}
+.blockProduct {
+    border: 1px solid  #80808033;
+    padding:4% 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.blockProduct:hover{
+    border: 1px solid green;
+}
+.conditionGoogsBlock {
+    width: max-content;
+    padding: 5px;
+    border-radius: 20px;
+}
+.notSaleProduct{
+    background-color: rgb(236, 182, 33);
+}
+.saleProduct{
+    background-color: red;
+}
+.conditionGoogs {
+    font-size: 10px;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+}
+.productImage {
+    max-width: 100%;
+}
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.priceProduct {
+    font-size: 30px;
+    color: red;
+}
