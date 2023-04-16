@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+    .mainBlock{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border: 1px solid black;
+        border-radius: 2%;
+        padding: 20px;
+        box-shadow: 5px 8px 14px;
+        
+    }
+    input{
+        width: 100%;
+    }
+</style>
+<body>
+    <!-- <p>Задача 2. Зробити конвертер валют (курси валют – константи у скрипті)</p> -->
+
+
+    <div class="mainBlock">
+        <label>
+            Сума у гривнях
+            <input type="number" value="0" id="sumGrn">
+        </label>
+        <div>
+            <button id="btnConvert">Конвертувати</button>
+        </div>
+        <label>
+            Сума в євро
+            <input type="number"  id="sumEuro" value="">
+        </label>
+        <label>
+            Сума в доларах
+            <input type="number"  id="sumDolars" value="">
+        </label>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

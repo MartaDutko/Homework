@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class DateOfFirm {
+            #firmYear
+            #firmMonth
+
+            constructor(initData) {
+                this.FirmYear = initData.year
+                this.FirmMonth = initData.month
+            }
+            get FirmYear() {
+                return this.#firmYear
+            }
+            set FirmYear(value) {
+                if (value < 0)
+                    throw new Error('Error year')
+                this.#firmYear = value
+            }
+            get FirmMonth() {
+                return this.#firmMonth
+            }
+            set FirmMonth(value) {
+                if (value < 1 || value > 12)
+                    throw new Error('Error month')
+                this.#firmMonth = value
+            }
+
+            // визначення кількості років існування фірми
+            getAgeOfFirm() {
+                return (new Date().getFullYear() - this.#firmYear)
+            }
+            toString() {
+                return `${this.#firmYear}, ${this.#firmMonth}`
+            }
+        }
+
+        class Service {
+            #nameService
+            #price
+            #dedlineInDay
+            constructor(initData) {
+                this.NameService = initData.nameService
+                this.Price = initData.price
+                this.DedlineInDay = initData.dedlineInDay
+            }
+            get NameService() {
+                return this.#nameService
+            }
+            set NameService(value) {
+                if (value.length < 5)
+                    throw new Error('Error short name')
+                this.#nameService = value
+            }
+            get Price() {
+                return this.#price
+            }
+            set Price(value) {
+                if (value < 1)
+                    throw new Error('Error price')
+                this.#price = value
+            }
+            get DedlineInDay() {
+                return this.#dedlineInDay
+            }
+            set DedlineInDay(value) {
+                if (value < 1)
+                    throw new Error('Error dedline')
+                this.#dedlineInDay = value
+            }
+
+            toString() {
+                return `Назва послуги - ${this.#nameService},вартість - ${this.#price},термін виконання - ${this.#dedlineInDay}`
+            }
+        }
+
+        class AddressesOfBranches {
+            #country
+            #city
+            #street
+            #numberBuild
+            constructor(initData) {
+                this.Country = initData.country
+                this.City = initData.city
+                this.Street = initData.street
+                this.NumberBuild = initData.numberBuild
+            }
+            get Country() {
+                return this.#country
+            }
+            set Country(value) {
+                if (value.length < 3)
+                    throw new Error('Error country')
+                this.#country = value
+            }
+            get City() {
+                return this.#city
+            }
+            set City(value) {
+                if (value.length < 3)
+                    throw new Error('Error city')
+                this.#city = value
+            }
+            get Street() {
+                return this.#street
+            }
+            set Street(value) {
+                if (value.length < 3)
+                    throw new Error('Error street')
+                this.#street = value
+            }
+            get NumberBuild() {
+                return this.#numberBuild
+            }
+            set NumberBuild(value) {
+                if (value < 1)
+                    throw new Error('Error numder of build')
+                this.#numberBuild = value
+            }
+
+            toString() {
+                return `Країна - ${this.#country}<br>Місто - ${this.#city}<br>Вулиця - ${this.#street}<br> Hомер будівлі - ${this.#numberBuild}`
+            }
+
+        }
+
+        class Firm {
+            #nameFirm
+            #dateOfEstablishment
+            #services
+            #addressesOfBranches
+            constructor(initData, services, addressesOfBranches) {
+                this.NameFirm = initData.name
+                this.DateOfEstablishment = new DateOfFirm(initData.dateOfFirm)
+                this.Services = services
+                this.AddressesOfBranches = addressesOfBranches
+            }
+            get NameFirm() {
+                return this.#nameFirm
+            }
+            set NameFirm(value) {
+                this.#nameFirm = value
+            }
+            get DateOfEstablishment() {
+                return this.#dateOfEstablishment
+            }
+            set DateOfEstablishment(value) {
+                this.#dateOfEstablishment = value
+            }
+            get Services() {
+                return this.#services
+            }
+            set Services(value) {
+                this.#services = value
+            }
+            get AddressesOfBranches() {
+                return this.#addressesOfBranches
+            }
+            set AddressesOfBranches(value) {
+                this.#addressesOfBranches = value
+            }
+
+            // метод виведення всіх філіалів у вказаному місті
+            alllBranchesInTheSpecifiedCity(value) {
+                return this.#addressesOfBranches.filter(element => element.City === value)
+            }
+            // виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу
+            servicesCanBePerformedSpecifiedMoneyAndTime(priceVal, timeVal) {
+                return this.#services.filter(element => element.Price === priceVal && element.DedlineInDay === timeVal)
+            }
+            toString(){
+                return`${this.#nameFirm},${this.#dateOfEstablishment},${this.#services},${this.#addressesOfBranches}`
+            }
+        }
+
+        const initData = {
+            name: 'Firma',
+            dateOfFirm: { year: 2000, month: 6 }
+        }
+        const services = [
+            new Service({ nameService: 'servise1', price: 100, dedlineInDay: 7 }),
+            new Service({ nameService: 'servise2', price: 100, dedlineInDay: 5 }),
+            new Service({ nameService: 'servise1', price: 100, dedlineInDay: 7 })
+        ]
+        const addressesOfBranches = [
+            new AddressesOfBranches({ country: 'Ukraine', city: 'Lviv', street: 'Ivana Franka1', numberBuild: 23 }),
+            new AddressesOfBranches({ country: 'Poland', city: 'Warshava', street: 'Ivana Franka2', numberBuild: 3 }),
+            new AddressesOfBranches({ country: 'Ukraine', city: 'Lviv', street: 'Ivana Franka3', numberBuild: 32 }),
+        ]
+
+
+        let firm = new Firm(initData, services, addressesOfBranches)
+        console.log(firm.DateOfEstablishment.getAgeOfFirm());
+        console.log(firm.alllBranchesInTheSpecifiedCity('Lviv'));
+        console.log(firm.servicesCanBePerformedSpecifiedMoneyAndTime(100,7));
+
+
+    </script>
+</body>
+
+</html>

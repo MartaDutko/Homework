@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно генеруються числа, які треба
+        перемножати), AddChecker (клас для перевірки додавання - рандомно генеруються числа у заданому
+        діапазоні, які треба додавати). Обидва класи надсилають результати тестування об'єкту класу Hystory,
+        який зберігає історію тестування у масиві у вигляді об'єктів
+        Приклад.
+        testsList= [
+        {firstNum:1, secondNum:5,opration:’*’, userAnswer:7, correctAnswer:5},
+        {firstNum:3, secondNum:4,opration:’+’, userAnswer:7, correctAnswer:7},
+        ]
+        Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля.
+        Розробити клас TestManager, який використовуючи ці класи за допомогою таймера періодично генерує якісь N
+        задач (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування. Результати
+        тестування додаються в об’єкт History. Зробити так, щоб об'єкт такого класу можна було створити тільки
+        один. Коли зроблено ці N задач вивести усю історію на екран.
+    </p>
+
+    <script>
+
+        class Hystory {
+            static testArr = []
+            static printHistory() {
+                return Hystory.testArr
+            }
+
+            toString() {
+                return `${Hystory.testArr}`
+            }
+        }
+
+        class TestData {
+            constructor(firstNum, secondNum, operation, userAnswer, correctAnswer) {
+                this.firstNum = firstNum
+                this.secondNum = secondNum
+                this.operation = operation
+                this.userAnswer = userAnswer
+                this.correctAnswer = correctAnswer
+            }
+            addObgect() {
+                Hystory.testArr.push({
+                    firstNum: this.firstNum,
+                    secondNum: this.secondNum,
+                    operation: this.operation,
+                    userAnswer: this.userAnswer,
+                    correctAnswer: this.correctAnswer
+                })
+            }
+            toString() {
+                return `${this.firstNum}, ${this.secondNum},${this.operation},${this.correctAnswer},${this.userAnswer}`
+            }
+        }
+
+        // *
+        class MultChecker {
+            static minValue = 1
+            static maxValue = 9
+            firstNum
+            secondNum
+            correctAnswer
+            userAnswer
+
+            randomNumber() {
+                return MultChecker.minValue + Math.floor(Math.random() * (MultChecker.maxValue - MultChecker.minValue + 1))
+            }
+
+            multCheckerAnswer() {
+                this.correctAnswer = this.firstNum * this.secondNum
+                return this.correctAnswer
+            }
+
+            print() {
+                return `${this.firstNum = this.randomNumber()} * ${this.secondNum = this.randomNumber()}`
+                // return `${this.firstNum = 5} * ${this.secondNum = 5}`
+            }
+            toString() {
+                return `${this.firstNum}, ${this.secondNum},${this.correctAnswer},${this.userAnswer}`
+            }
+
+            userAnswerCheck(value) {
+                this.userAnswer = value
+                if (this.multCheckerAnswer() !== this.userAnswer)
+                    alert('not corect answer')
+                else
+                    alert('corect answer')
+            }
+
+            testDataPush() {
+                new TestData(this.firstNum, this.secondNum, '*', this.userAnswer, this.correctAnswer).addObgect()
+            }
+        }
+
+        // +
+        class AddChecker {
+            static minValue = 1
+            static maxValue = 9
+            firstNum
+            secondNum
+            correctAnswer
+            userAnswer
+            randomNumber() {
+                return AddChecker.minValue + Math.floor(Math.random() * (AddChecker.maxValue - AddChecker.minValue + 1))
+            }
+            addCheckerAnswer() {
+                this.correctAnswer = this.firstNum + this.secondNum
+                return this.correctAnswer
+            }
+            print() {
+                return `${this.firstNum = this.randomNumber()} + ${this.secondNum = this.randomNumber()}`
+            }
+            toString() {
+                return `${this.firstNum}, ${this.secondNum},${this.correctAnswer},${this.userAnswer}`
+            }
+            userAnswerCheck(value) {
+                this.userAnswer = value
+                if (this.addCheckerAnswer() !== this.userAnswer)
+                    alert('not corect answer')
+                else
+                    alert('corect answer')
+            }
+            testDataPush() {
+                new TestData(this.firstNum, this.secondNum, '+', this.userAnswer, this.correctAnswer).addObgect()
+            }
+        }
+
+        // *
+        // let multChecker = new MultChecker()
+        // console.log(multChecker.toString());
+        // multChecker.userAnswerCheck(25)
+        // multChecker.testDataPush()
+
+        // // +
+        // let addChecker = new AddChecker()
+        // console.log(addChecker.toString());
+        // addChecker.userAnswerCheck(2)
+        // addChecker.testDataPush()
+
+        // let hystory = new Hystory()
+        // console.log(Hystory.testArr);
+
+
+
+
+        // singleTone
+        class TestManager {
+            static test
+            constructor() {
+                if (TestManager.test)
+                    return TestData.test
+                TestManager.test = this
+            }
+            printHistory() {
+                // let history = new Hystory
+                // document.write(`${Hystory.testArr}`)
+                console.table(Hystory.printHistory())
+            }
+            timer(N, time) {
+                let count = 0
+                let startTest = setInterval(() => {
+                    let random = 1 + Math.floor(Math.random() * (2 - 1 + 1))
+                    if (random === 1) {
+                        let multChecker = new MultChecker()
+                        let userMultChecker = parseInt(prompt(`${multChecker.print()} Ваша відповідь`))
+                        multChecker.userAnswerCheck(userMultChecker)
+                        multChecker.testDataPush()
+                    }
+                    else {
+                        let addChecker = new AddChecker()
+                        let userAddChecker = parseInt(prompt(`${addChecker.print()} Ваша відповідь`))
+                        addChecker.userAnswerCheck(userAddChecker)
+                        addChecker.testDataPush()
+                    }
+                    count++
+                    if (count === N) {
+                        console.log(N, time);
+                        clearInterval(startTest)
+                        this.printHistory()
+                    }
+                }, time * 1000)
+
+            }
+            toString(){
+                    return `${this.startTest}`
+            }
+        }
+        let test = new TestManager()
+        test.timer(2, 5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // class User{
+        //     constructor(name, age, male, addres, car){
+        //         this.name = name
+        //         this.age = age
+        //         this.male = male
+        //         this.addres = addres
+        //         this.car = car
+        //     }
+        // }
+
+        // class Addres{
+        //     constructor(street, numberBuild){
+        //         this.street = street
+        //         this.numberBuild = numberBuild
+        //     }
+        // }
+
+        // class Car{
+        //     #model
+        //     constructor(model){
+        //         this.Model = model
+        //     }
+
+        //     set Model(model){
+        //         this.#model = model
+        //     }
+
+        //     get Model(){
+        //         return this.#model
+        //     }
+        // }
+
+        // let user = [
+        //     new User('nmae', 12,'man', new Addres('O.Pos', 22), new Car('VAG')),
+        //     new User('nmae', 12,'man', new Addres('O.Pos', 22)),
+        //     new User('nmae', 12,'man', new Addres('O.Pos', 22)),
+        //     new User('nmae', 12,'man', new Addres('O.Pos', 22)),
+        //     new User('nmae', 12,'man', new Addres('O.Pos', 22)),
+        // ]
+
+        // console.log(user[0].car.Model);
+        // console.log(user[0].car.Model = 'test');
+        // console.log(user[0].car.Model);
+
+
+
+    </script>
+</body>
+
+</html>

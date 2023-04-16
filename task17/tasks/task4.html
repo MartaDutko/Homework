@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник
+        (назва, реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою
+        товару, фільтрація за назвою фірми
+    </p>
+
+    <script>
+        class Warehouse {
+            #baseOfGoods
+            constructor(baseOfGoods) {
+                this.BaseOfGoods = baseOfGoods
+            }
+            get BaseOfGoods() {
+                return this.#baseOfGoods
+            }
+            set BaseOfGoods(value) {
+                this.#baseOfGoods = value
+            }
+            // Організувати реєстрацію
+            registrationOfGoods(name, unit, quantity, manufacturersCompany, registrationNumber) {
+                this.#baseOfGoods.push(new BaseOfGoods({ nameProduct: name, unit: unit, quantity: quantity, manufacturerCompany: new ManufacturerCompany(manufacturersCompany, registrationNumber) }),)
+            }
+
+            // Організувати відвантаження
+            shipmentOfGoods(nameGood, quantity) {
+                let product = this.#baseOfGoods.filter(el => el.Name == nameGood)
+                if (product[0].Quantity - quantity < 1)
+                    throw new Error('Товар закінчився')
+                product[0].Quantity = product[0].Quantity - quantity
+            }
+
+            // фільтрація за назвою товару
+            filteringByProductName(value) {
+                return this.#baseOfGoods.filter(el => el.Name === value)
+            }
+
+            // фільтрація за назвою фірми
+            filteringByNameFirm(value) {
+                return this.#baseOfGoods.filter(el => el.ManufacturerCompany.Name === value)
+            }
+        }
+
+        // фірма виробник(назва, реєстраційний номер
+        class ManufacturerCompany {
+            #name
+            #registrationNumber
+            constructor(name, registrationNumber) {
+                this.Name = name
+                this.RegistrationNumber = registrationNumber
+            }
+            get Name() {
+                return this.#name
+            }
+            set Name(value) {
+                if (value.length === 0)
+                    throw new Error('Error name')
+                this.#name = value
+            }
+
+            get RegistrationNumber() {
+                return this.#registrationNumber
+            }
+            set RegistrationNumber(value) {
+                if (value.length === 0)
+                    throw new Error('Error registration number')
+                this.#registrationNumber = value
+            }
+            toString() {
+                return `${this.#name}, ${this.#registrationNumber}`
+            }
+        }
+
+        // База товарів
+        class BaseOfGoods {
+            #name
+            #unit
+            #quantity
+            #manufacturerCompany
+            constructor(obj) {
+                this.Name = obj.nameProduct
+                this.Unit = obj.unit
+                this.Quantity = obj.quantity
+                this.ManufacturerCompany = obj.manufacturerCompany
+            }
+
+            get Name() {
+                return this.#name
+            }
+            set Name(value) {
+                this.#name = value
+            }
+
+            get Unit() {
+                return this.#unit
+            }
+            set Unit(value) {
+                this.#unit = value
+            }
+
+            get Quantity() {
+                return this.#quantity
+            }
+            set Quantity(value) {
+                this.#quantity = value
+            }
+
+            get ManufacturerCompany() {
+                return this.#manufacturerCompany
+            }
+            set ManufacturerCompany(value) {
+                this.#manufacturerCompany = value
+            }
+
+        }
+
+        let baseOfGoods = [
+            new BaseOfGoods({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник1', 'реєстраційний номер') }),
+            new BaseOfGoods({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new BaseOfGoods({ nameProduct: 'product2', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new BaseOfGoods({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new BaseOfGoods({ nameProduct: 'product3', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник1', 'реєстраційний номер') }),
+            new BaseOfGoods({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new BaseOfGoods({ nameProduct: 'product2', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new BaseOfGoods({ nameProduct: 'product2', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new BaseOfGoods({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник1', 'реєстраційний номер') }),
+        ]
+
+        let warehouse = new Warehouse(baseOfGoods)
+        warehouse.registrationOfGoods('new product', 23, 65555, 'new firm', '545454')
+        warehouse.shipmentOfGoods('product3', 20)
+        // console.log(warehouse.filteringByProductName('product1'));
+        // console.log(warehouse.filteringByNameFirm('фірма виробник1'));
+        console.log(warehouse);
+    </script>
+</body>
+
+</html>

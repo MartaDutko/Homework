@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Створити службове авто (водій, марка, номер). Створити клас таким чином, щоб можна було створити тільки один
+        екземпляр цього класу.</p>
+    <script>
+        class CompanyCar {
+            static companyCar
+            constructor(driver, logo, number) {
+                if (CompanyCar.companyCar)
+                    return CompanyCar.companyCar
+
+                this.driver = driver
+                this.logo = logo
+                this.number = number
+                CompanyCar.companyCar = this
+            }
+            toString() {
+                return `${this.driver},${this.logo},${this.number}`
+            }
+        }
+        let car = new CompanyCar('Ivan', 'BMW', 'BC3232BA')
+        console.log(car);
+        let car2 = new CompanyCar('Petro', 'BMW', 'BC3232BA')
+        console.log(car2);
+
+    </script>
+</body>
+
+</html>

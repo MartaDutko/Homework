@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Особиста бібліотека. Картотека домашньої бібліотеки:
+        дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр,
+        видавництво (назва, реєстраційний номер, рік засування)).
+        Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.), походження книги і
+        наявність на даний час.
+        Організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за
+        видавництвом.
+    </p>
+
+    <script>
+
+        class PersonalLibrary {
+            #boocksList
+            constructor(boocksList) {
+                this.BoocksList = boocksList
+            }
+            get BoocksList() {
+                return this.#boocksList
+            }
+            set BoocksList(value) {
+                this.#boocksList = value
+            }
+            toString() {
+                return `${this.#boocksList}`
+            }
+            // Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.)
+            librarySectionsByGenre(value) {
+                return this.#boocksList.filter(el => el.BookGenre === value)
+            }
+
+            originOfTheBook(value) {
+                return this.#boocksList.find(el => el.NameOfBoock === value).OriginOfTheBook
+            }
+
+            currentlyAvailable(value) {
+                return this.#boocksList.find(el => el.NameOfBoock === value).CurrentlyAvailable
+            }
+
+            // додавання книг
+            addBoock(autorName, yearBirdthAutor, descriptionAutor, boockName, genre, namePublishingHouse, registrationNumberPublishingHouse,
+                yearOfIntroductionPublishingHouse, originOfTheBookValue, available) {
+                this.#boocksList.push(new Book({
+                    autor: new Authors(autorName, yearBirdthAutor, descriptionAutor),
+                    nameOfBoock: boockName,
+                    bookGenre: genre,
+                    publishingHouse: new PublishingHouse(namePublishingHouse, registrationNumberPublishingHouse, yearOfIntroductionPublishingHouse),
+                    originOfTheBook: originOfTheBookValue,
+                    currentlyAvailable: available
+                }))
+            }
+
+            // вилучення книг
+            deleteBoock(value) {
+                this.#boocksList = this.#boocksList.filter(el => el.NameOfBoock !== value)
+            }
+
+            // вибір книг за назвою, за ПІБ автора, за видавництвом
+            selectionOfBooksByTitle(value) {
+                return this.#boocksList.filter(el => el.NameOfBoock === value)
+            }
+            
+            selectionOfBooksByFullName(value) {
+                return this.#boocksList.filter(el => el.Author.FullName === value)
+            }
+
+            selectionOfBooksByPublishHouse(value) {
+                return this.#boocksList.filter(el => el.PublishingHouse.NamePublisher === value)
+            }
+        }
+
+        class Book {
+            #autor
+            #nameOfBoock
+            #bookGenre
+            #publishingHouse
+            #originOfTheBook
+            #currentlyAvailable
+            constructor(obg) {
+                this.Author = obg.autor
+                this.NameOfBoock = obg.nameOfBoock
+                this.BookGenre = obg.bookGenre
+                this.PublishingHouse = obg.publishingHouse
+                this.OriginOfTheBook = obg.originOfTheBook
+                this.CurrentlyAvailable = obg.currentlyAvailable
+            }
+            get Author() {
+                return this.#autor
+            }
+            set Author(value) {
+                if (value < 0)
+                    throw new Error('Error autor')
+                this.#autor = value
+            }
+            get NameOfBoock() {
+                return this.#nameOfBoock
+            }
+            set NameOfBoock(value) {
+                if (value.length < 1)
+                    throw new Error('Error name of boock')
+                this.#nameOfBoock = value
+            }
+            get BookGenre() {
+                return this.#bookGenre
+            }
+            set BookGenre(value) {
+                if (value.length < 1)
+                    throw new Error('Error boock genter')
+                this.#bookGenre = value
+            }
+            get PublishingHouse() {
+                return this.#publishingHouse
+            }
+            set PublishingHouse(value) {
+                this.#publishingHouse = value
+            }
+            get OriginOfTheBook() {
+                return this.#originOfTheBook
+            }
+            set OriginOfTheBook(value) {
+                if (value.length < 1)
+                    throw new Error('Error origin of the book')
+                this.#originOfTheBook = value
+            }
+            get CurrentlyAvailable() {
+                return this.#currentlyAvailable
+            }
+            set CurrentlyAvailable(value) {
+                this.#currentlyAvailable = value
+            }
+            toString() {
+                return `${this.#autor},${this.#nameOfBoock},${this.#bookGenre},${this.#publishingHouse},${this.#originOfTheBook},${this.#currentlyAvailable}`
+            }
+        }
+
+        class Authors {
+            #fullName
+            #yearBirdth
+            #briefDescription
+            constructor(fullName, yearBirdth, briefDescription) {
+                this.FullName = fullName
+                this.YearBirdth = yearBirdth
+                this.BriefDescription = briefDescription
+            }
+
+            get FullName() {
+                return this.#fullName
+            }
+            set FullName(value) {
+                if (value.length < 5)
+                    throw new Error('Short name')
+                this.#fullName = value
+            }
+
+            get YearBirdth() {
+                return this.#yearBirdth
+            }
+            set YearBirdth(value) {
+                if (value < 1 || value > new Date().getFullYear())
+                    throw new Error('Error year')
+                this.#yearBirdth = value
+            }
+
+            get BriefDescription() {
+                return this.#briefDescription
+            }
+            set BriefDescription(value) {
+                if (value.lendth < 20)
+                    throw new Error('Error short description')
+                this.#briefDescription = value
+            }
+
+            toString() {
+                return `${this.#fullName}, ${this.#yearBirdth}, ${this.#briefDescription}`
+            }
+        }
+
+        class PublishingHouse {
+            #namePublisher
+            #registrationNumber
+            #yearOfIntroduction
+            constructor(namePublisher, registrationNumber, yearOfIntroduction) {
+                this.NamePublisher = namePublisher
+                this.RegistrationNumber = registrationNumber
+                this.YearOfIntroduction = yearOfIntroduction
+            }
+
+            get NamePublisher() {
+                return this.#namePublisher
+            }
+            set NamePublisher(value) {
+                if (value.length < 1)
+                    throw new Error('Error publisher')
+                this.#namePublisher = value
+            }
+
+            get RegistrationNumber() {
+                return this.#registrationNumber
+            }
+            set RegistrationNumber(value) {
+                if (value < 5)
+                    throw new Error('Error registration number')
+                this.#registrationNumber = value
+            }
+
+
+            get YearOfIntroduction() {
+                return this.#yearOfIntroduction
+            }
+            set YearOfIntroduction(value) {
+                if (value < 1 || value > new Date().getFullYear())
+                    throw new Error('Error year of introduction')
+                this.#yearOfIntroduction = value
+            }
+
+            toString() {
+                return `${this.#namePublisher}, ${this.#registrationNumber}, ${this.#yearOfIntroduction}`
+            }
+        }
+
+        let boocksList = [
+            new Book({
+                autor: new Authors('Ivan Ivanovuch Ivanov1', 1900, 'A stylish and emotional writer with a sensual approach to the subject.'),
+                nameOfBoock: 'About Ivan1',
+                bookGenre: 'hobby',
+                publishingHouse: new PublishingHouse('Name1', 42324, 2000),
+                originOfTheBook: 'gift',
+                currentlyAvailable: true
+            }),
+            new Book({
+                autor: new Authors('Ivan Ivanovuch Ivanov1', 1900, 'A stylish and emotional writer with a sensual approach to the subject.'),
+                nameOfBoock: 'About Ivan2', bookGenre: 'autobiography',
+                publishingHouse: new PublishingHouse('Name2', 42324, 2000),
+                originOfTheBook: 'buy',
+                currentlyAvailable: false
+            }),
+            new Book({
+                autor: new Authors('Ivan Ivanovuch Ivanov2', 1900, 'A stylish and emotional writer with a sensual approach to the subject.'),
+                nameOfBoock: 'About Ivan2', bookGenre: 'hobby',
+                publishingHouse: new PublishingHouse('Name1', 42324, 2000),
+                originOfTheBook: 'gift',
+                currentlyAvailable: true
+            }),
+            new Book({
+                autor: new Authors('Ivan Ivanovuch Ivanov1', 1900, 'A stylish and emotional writer with a sensual approach to the subject.'),
+                nameOfBoock: 'About Ivan4', bookGenre: 'autobiography',
+                publishingHouse: new PublishingHouse('Name2', 42324, 2000),
+                originOfTheBook: 'buy',
+                currentlyAvailable: true
+            })
+        ]
+
+        let personalLibrary = new PersonalLibrary(boocksList)
+        
+        // console.log(personalLibrary.librarySectionsByGenre('hobby'));
+        // console.log(personalLibrary.currentlyAvailable('About Ivan2'));
+        // console.log(personalLibrary.originOfTheBook('About Ivan4'));
+        // personalLibrary.addBoock('Petro Petrovich Petrov', 1222, 'A stylish and emotional writer with a sensual approach to the subject.',
+        //     'About Petro', 'hobby', 'New name', 345678, 2005, 'gift', true)
+        // personalLibrary.deleteBoock('About Ivan1')
+        // console.log(personalLibrary.selectionOfBooksByTitle('About Ivan2'));
+        // console.log(personalLibrary.selectionOfBooksByFullName('Ivan Ivanovuch Ivanov1'));
+        // console.log(personalLibrary.selectionOfBooksByPublishHouse('Name2'));
+        
+        console.log(personalLibrary);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+    }
+    .wrapper{
+        background-color: rgb(203, 202, 202);
+        padding: 5%;
+    }
+    .block{
+        display: flex;
+        flex-direction: column;
+        margin: 5px 0px 5px 0px;
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <div class="block">
+            <h2>Вид транспорту</h2>
+            <label>
+                <select id="typeOfTransport">
+                    <option value="500">авто - 500</option>
+                    <option value="300">автобус - 300</option>
+                    <option value="1000">літак - 1000</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="block">
+            <h2>Xарчування</h2>
+            <label>
+                <input type="checkbox" value="100" class="radio">
+                сніданок - 100
+            </label>
+            <label>
+                <input type="checkbox" value="150"  class="radio">
+                обід - 150
+            </label>
+            <label>
+                <input type="checkbox" value="200"  class="radio">
+                вечеря - 200
+            </label>
+        </div>
+
+        <div class="block">
+            <h2>Виберіть одного гіда</h2>
+            <label>
+                <input type="radio" name="guide" value="200">
+                Гід 1 - 200
+            </label>
+            <label>
+                <input type="radio" name="guide" value="300">
+                Гід 2 - 300
+            </label>
+            <label>
+                <input type="radio" name="guide" value="400">
+                Гід 3 - 400
+            </label>
+        </div>
+
+        <div>
+            <button id="btnTotalPrice">Загальна сума</button>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

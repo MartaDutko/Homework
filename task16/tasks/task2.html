@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 2. Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді
+        доларового еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у
+        гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати
+        в окремому полі. </p>
+
+    <script>
+        class TMoney {
+            static exchangeRate = 40
+            #dollars
+
+            constructor(dollars) {
+                this.Dollars = dollars
+            }
+            get Dollars() {
+                return this.#dollars
+            }
+            set Dollars(value) {
+                if (value < 0)
+                    throw new Error('Error')
+                this.#dollars = value
+            }
+            setUahToDollars(value) {
+                this.#dollars += value / TMoney.exchangeRate
+            }
+            getUahToDollars(value) {
+                if (this.#dollars -  value / TMoney.exchangeRate < 0)
+                throw new Error('Замало грошей')
+                    this.#dollars -= value / TMoney.exchangeRate
+            }
+            getExchangeRateFor100UahIncrease() {
+                return ((this.#dollars * TMoney.exchangeRate + 100) / this.#dollars)
+            }
+        }
+
+        let user = new TMoney(400)
+        console.log(user);
+        console.log('set');
+        user.setUahToDollars(800)
+        console.log(user);
+        console.log('get');
+        user.getUahToDollars(300)
+        console.log(user);
+        console.log(user.getExchangeRateFor100UahIncrease());
+
+    </script>
+</body>
+
+</html>

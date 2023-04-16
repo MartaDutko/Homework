@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 1. Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата представляється
+        структурою із трьома полями. Реалізувати методи збільшення/зменшення дати на певну кількість днів,
+        місяців чи років. Введення та виведення дати реалізувати за допомогою методу toString.</p>
+
+    <script>
+
+        class TDate {
+            #year
+            #month
+            #day
+            constructor(year, month, day) {
+                this.Year = year
+                this.Month = month
+                this.Day = day
+            }
+
+            // year
+            get Year() {
+                return this.#year
+            }
+            set Year(value) {
+                if (value < 0)
+                    throw new Error(`not corect year`)
+
+                this.#year = value
+            }
+            // month
+            get Month() {
+                return this.#month
+            }
+            set Month(value) {
+                if (value < 1 || value > 12)
+                    throw new Error(`not corect month`)
+
+                this.#month = value
+            }
+            // day
+            get Day() {
+                return this.#day
+            }
+            set Day(value) {
+                if (value < 1 || value > 31)
+                    throw new Error(`not corect day`)
+                this.#day = value
+            }
+
+            toString() {
+                return `${this.#year}.${this.#month}.${this.#day}`
+            }
+
+            // day
+            decreaseDay(value) {
+                if (this.#day - value < 0)
+                    throw new Error('Day')
+                this.#day -= value
+            }
+
+            addDays(value) {
+                this.#day += value
+                if (this.#day / 31 !== 1) {
+                    this.addMonth(Math.floor(this.#day / 31))
+                    this.#day = (this.#day % 31)
+                }
+            }
+            // month
+            decreaseMonth(value) {
+                if (this.#month - value < 0)
+                    throw new Error('Month')
+                this.#month -= value
+            }
+
+            addMonth(value) {
+                this.#month += value
+                this.addYear(Math.floor(this.#month / 12))
+                this.#month = (this.#month % 12)
+            }
+
+            // year
+            decreaseYear(value) {
+                if (this.#year - value < 0)
+                    throw new Error('Year')
+                this.#year -= value
+            }
+            addYear(value) {
+                this.#year += value
+            }
+
+        }
+
+        let newData = new TDate(2023, 1, 1)
+        newData.addDays(30)
+        document.write(newData)
+
+    </script>
+</body>
+
+</html>

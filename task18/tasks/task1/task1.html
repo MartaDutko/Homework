@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .mainBlock {
+        border: 1px solid black;
+        border-radius: 5%;
+        box-shadow: 5px 8px 14px;
+        display: flex;
+        flex-direction: column;
+        padding: 5%;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    .blockBtn {
+        padding: 5%;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    button {
+        width: 20%;
+    }
+</style>
+<body>
+    <div class="mainBlock">
+        <label>
+            First number
+            <input type="number" value="0" id="firstNumber">
+        </label>
+        <label>
+            Second number
+            <input type="number" value="0" id="secondNumber">
+        </label>
+        <div class="blockBtn">
+            <button value="+" id="addition" class="btn">+</button>
+            <button value="-" id="subtraction" class="btn">-</button>
+            <button value="*" id="multiplication" class="btn">*</button>
+            <button value="/" id="division" class="btn">/</button>
+        </div>
+        <label>
+            Result
+            <input type="number" id="result" value="0">
+        </label>
+    </div>
+
+<script src="./script.js"></script>
+</body>
+
+</html>

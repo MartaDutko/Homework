@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Задача 4. Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для
+        зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження
+        максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+    </p>
+    <script>
+        class TBankomat {
+            #banknotes
+            constructor(banknotes) {
+                this.Banknotes = banknotes
+            }
+            get Banknotes() {
+                return this.#banknotes
+            }
+            set Banknotes(value) {
+                this.#banknotes = value
+            }
+
+            minSum() {
+                let res = +Infinity
+                for (const el of this.#banknotes) {
+                    if (el.Nominal < res) res = el.Nominal
+                }
+                return res
+            }
+
+            maxSum() {
+                return this.#banknotes.reduce((prevRes, el) => prevRes + (el.Quantity * el.Nominal), 0)
+            }
+
+            withdrawalMoney(value) {
+                if ((this.maxSum() - value) < 1)
+                    throw new Error('Мало грошей')
+                    
+                for (let i = 0; i < this.#banknotes.length; i++) {
+                    while (value >= this.#banknotes[i].Nominal && this.#banknotes[i].Quantity > 0) {
+                        value -= this.#banknotes[i].Nominal
+                        this.#banknotes[i].Quantity = this.#banknotes[i].Quantity - 1
+                    }
+                }
+            }
+        }
+
+        class Banknote {
+            #quantity
+            #nominal
+            constructor(quantity, nominal) {
+                this.Quantity = quantity
+                this.Nominal = nominal
+            }
+            get Quantity() {
+                return this.#quantity
+            }
+            set Quantity(value) {
+                if (value < 0)
+                    throw new Error('Error short quantity')
+                this.#quantity = value
+            }
+            get Nominal() {
+                return this.#nominal
+            }
+            set Nominal(value) {
+                if (value < 5 && value > 200)
+                    throw new Error('Error short nominal')
+                this.#nominal = value
+            }
+        }
+
+        const banknoteValue = [
+            new Banknote(10, 200),
+            new Banknote(100, 100),
+            new Banknote(30, 50),
+            new Banknote(50, 20),
+            new Banknote(120, 10),
+            new Banknote(10, 5)
+        ]
+
+        let t = new TBankomat(banknoteValue)
+        console.log(t.minSum());
+        console.log(t.maxSum());
+        console.log(t.Banknotes);
+        t.withdrawalMoney(15050)
+        console.log(t.maxSum());
+        console.log(t.Banknotes);
+
+    </script>
+</body>
+
+</html>
