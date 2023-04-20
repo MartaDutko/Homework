@@ -1,0 +1,35 @@
+body{
+    /* display: flex;
+    justify-content: center;
+    flex-wrap: wrap; */
+    position: relative;
+}
+/* .snow{
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+} */
+
+.snowAnimation {
+   position: absolute;
+    /* top: -50px; */
+    animation: slide-down 5s ease-in-out;
+  }
+  
+  @keyframes slide-down {
+    0% {
+      top: -100px;
+    }
+    100% {
+      top: calc(100vh);
+    } 
+
+  }
+  
+
+  .move{
+    position: absolute;
+
+  }

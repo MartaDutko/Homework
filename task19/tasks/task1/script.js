@@ -1,8 +1,5 @@
 // Задача 1. Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку
 
-
-
-
 class Product {
     constructor({ productStatus, sale, img, tittel, price }) {
         this.productStatus = productStatus
