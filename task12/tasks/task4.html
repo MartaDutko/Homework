@@ -22,7 +22,7 @@
             for (let index = 1; index < arr.length; index++) {
                 if (arr[index - 1] > arr[index]) {
                     [arr[index - 1], arr[index]] = [arr[index], arr[index - 1]]
-                    console.log(arr);
+                    console.table(arr);
                     chenges = true
                 }
             }

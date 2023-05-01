@@ -56,44 +56,44 @@
             }
 
             toString() {
-                return `${this.#year}.${this.#month}.${this.#day}`
+                return `${this.Year}.${this.Month}.${this.Day}`
             }
 
             // day
             decreaseDay(value) {
-                if (this.#day - value < 0)
+                if (this.Day - value < 0)
                     throw new Error('Day')
-                this.#day -= value
+                this.Day -= value
             }
 
             addDays(value) {
-                this.#day += value
-                if (this.#day / 31 !== 1) {
-                    this.addMonth(Math.floor(this.#day / 31))
-                    this.#day = (this.#day % 31)
+                this.Day += value
+                if (this.Day / 31 !== 1) {
+                    this.addMonth(Math.floor(this.Day / 31))
+                    this.Day = (this.Day % 31)
                 }
             }
             // month
             decreaseMonth(value) {
-                if (this.#month - value < 0)
+                if (this.Month - value < 0)
                     throw new Error('Month')
-                this.#month -= value
+                this.Month -= value
             }
 
             addMonth(value) {
-                this.#month += value
-                this.addYear(Math.floor(this.#month / 12))
-                this.#month = (this.#month % 12)
+                this.Month += value
+                this.addYear(Math.floor(this.Month / 12))
+                this.Month = (this.Month % 12)
             }
 
             // year
             decreaseYear(value) {
-                if (this.#year - value < 0)
+                if (this.Year - value < 0)
                     throw new Error('Year')
-                this.#year -= value
+                this.Year -= value
             }
             addYear(value) {
-                this.#year += value
+                this.Year += value
             }
 
         }

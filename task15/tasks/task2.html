@@ -31,17 +31,15 @@
             }
             // Додавання пасажирів
             addPassengers(num) {
-                if (this.numSeats <= num)
+                if ((this.numSeats - this.numPassengers) <= num)
                     throw new Error(`В машині тільки ${this.numSeats} місць`)
-                return this.numPassengers += num
+                this.numPassengers += num
             }
             // Висадка пасажирів
             disembarkationPassengers(num) {
                 if ((this.numPassengers - num) < 0)
                     throw new Error('Hемає більше пасажирів')
-                if (this.numPassengers === 0)
-                    throw new Error('В машині немає більше пасажирів')
-                return this.numPassengers -= num
+                this.numPassengers -= num
             }
         }
 

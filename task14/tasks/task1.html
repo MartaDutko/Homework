@@ -186,16 +186,19 @@
         // console.log(quantityWebsiteBeetween_2000_2009);
 
         // 3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
-        let sponsorsInvestmentsMore_100000 = 0
+
+        let count = 0
         for (const object of companyWebsite) {
+            let res = 0
             for (const sponsor of object.sponsors) {
-                if (sponsor.amountInvestments > 100000) {
-                    sponsorsInvestmentsMore_100000++
-                    break
-                }
+                res += sponsor.amountInvestments
+            }
+            if (res >= 100000) {
+                count++
             }
         }
-        // console.log(sponsorsInvestmentsMore_100000);
+
+        // console.log(`Кількість  сайтів де сума спонсорських вкладень більша за 100000 = ${count}`);
 
         // 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
         let sponsorsList = []
@@ -212,6 +215,7 @@
             return preRes
         }
             , 0)
+
         // console.log(yearHighestProfit);
 
         // 6) упорядкувати список за спаданням прибутку
@@ -231,10 +235,12 @@
 
         // 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
         let websiteCostTo_10000 = companyWebsite.filter((el) => el.cost < 10000)
+        let dublicatCostTo_10000= JSON.parse(JSON.stringify(websiteCostTo_10000))
         let websiteCostMore_10000 = companyWebsite.filter((el) => el.cost >= 10000)
+        let dublicatCostMore_10000 = JSON.parse(JSON.stringify(websiteCostMore_10000))
 
-        // console.log(websiteCostTo_10000);
-        // console.log(websiteCostMore_10000);
+        // console.log(dublicatCostTo_10000);
+        // console.log(dublicatCostMore_10000);
 
     </script>
 

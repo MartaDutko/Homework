@@ -34,10 +34,13 @@
         // console.log(priceDifference);
 
         // 3) Товари, які доступні(sell_status:"available")
-        let quantityProductAvailable = dataList.reduce((preRes, object) => {
-            if (object.sell_status === "available") preRes++
-            return preRes
-        }, 0)
+        // let quantityProductAvailable = dataList.reduce((preRes, object) => {
+        //     if (object.sell_status === "available") preRes++
+        //     return preRes
+        // }, 0)
+
+        let quantityProductAvailable = dataList.filter(el => el.sell_status === "available")
+
         // console.log(quantityProductAvailable);
 
         // 4) сформувати новий список об”єктів тільки доступних для продажу товарів,

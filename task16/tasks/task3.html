@@ -38,10 +38,10 @@
 
             // визначення кількості років існування фірми
             getAgeOfFirm() {
-                return (new Date().getFullYear() - this.#firmYear)
+                return (new Date().getFullYear() - this.FirmYear)
             }
             toString() {
-                return `${this.#firmYear}, ${this.#firmMonth}`
+                return `${this.FirmYear}, ${this.FirmMonth}`
             }
         }
 
@@ -80,7 +80,7 @@
             }
 
             toString() {
-                return `Назва послуги - ${this.#nameService},вартість - ${this.#price},термін виконання - ${this.#dedlineInDay}`
+                return `Назва послуги - ${this.NameService},вартість - ${this.Price},термін виконання - ${this.DedlineInDay}`
             }
         }
 
@@ -129,7 +129,7 @@
             }
 
             toString() {
-                return `Країна - ${this.#country}<br>Місто - ${this.#city}<br>Вулиця - ${this.#street}<br> Hомер будівлі - ${this.#numberBuild}`
+                return `Країна - ${this.Country}<br>Місто - ${this.City}<br>Вулиця - ${this.Street}<br> Hомер будівлі - ${this.NumberBuild}`
             }
 
         }
@@ -172,14 +172,14 @@
 
             // метод виведення всіх філіалів у вказаному місті
             alllBranchesInTheSpecifiedCity(value) {
-                return this.#addressesOfBranches.filter(element => element.City === value)
+                return this.AddressesOfBranches.filter(element => element.City === value)
             }
             // виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу
             servicesCanBePerformedSpecifiedMoneyAndTime(priceVal, timeVal) {
-                return this.#services.filter(element => element.Price === priceVal && element.DedlineInDay === timeVal)
+                return this.Services.filter(element => element.Price === priceVal && element.DedlineInDay === timeVal)
             }
             toString(){
-                return`${this.#nameFirm},${this.#dateOfEstablishment},${this.#services},${this.#addressesOfBranches}`
+                return`${this.NameFirm},${this.DateOfEstablishment},${this.Services},${this.AddressesOfBranches}`
             }
         }
 

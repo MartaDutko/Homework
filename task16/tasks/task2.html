@@ -31,15 +31,15 @@
                 this.#dollars = value
             }
             setUahToDollars(value) {
-                this.#dollars += value / TMoney.exchangeRate
+                this.Dollars += value / TMoney.exchangeRate
             }
             getUahToDollars(value) {
-                if (this.#dollars -  value / TMoney.exchangeRate < 0)
+                if (this.Dollars -  value / TMoney.exchangeRate < 0)
                 throw new Error('Замало грошей')
-                    this.#dollars -= value / TMoney.exchangeRate
+                    this.Dollars -= value / TMoney.exchangeRate
             }
             getExchangeRateFor100UahIncrease() {
-                return ((this.#dollars * TMoney.exchangeRate + 100) / this.#dollars)
+                return ((this.Dollars * TMoney.exchangeRate + 100) / this.Dollars)
             }
         }
 

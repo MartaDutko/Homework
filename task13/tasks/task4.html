@@ -15,8 +15,7 @@
         вгаданих букв.</p>
 
     <script>
-        function makeTranslator() {
-            let gessWord = 'google'
+        function makeTranslator(gessWord) {
             let count = 0
             let i = 0
             return function (letter) {
@@ -27,11 +26,14 @@
             }
         }
 
-        let translator = makeTranslator()
-        for (let i = 0; i < 6; i++) {
-            console.log(translator((prompt('пошукова система'))));
+        function userGess(word) {
+            let translator = makeTranslator(word)
+            for (let i = 0; i < 6; i++) {
+                console.log(translator((prompt('пошукова система'))));
+            }
         }
 
+        userGess('google')
     </script>
 </body>
 

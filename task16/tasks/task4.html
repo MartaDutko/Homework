@@ -28,24 +28,24 @@
 
             minSum() {
                 let res = +Infinity
-                for (const el of this.#banknotes) {
+                for (const el of this.Banknotes) {
                     if (el.Nominal < res) res = el.Nominal
                 }
                 return res
             }
 
             maxSum() {
-                return this.#banknotes.reduce((prevRes, el) => prevRes + (el.Quantity * el.Nominal), 0)
+                return this.Banknotes.reduce((prevRes, el) => prevRes + (el.Quantity * el.Nominal), 0)
             }
 
             withdrawalMoney(value) {
                 if ((this.maxSum() - value) < 1)
                     throw new Error('Мало грошей')
                     
-                for (let i = 0; i < this.#banknotes.length; i++) {
-                    while (value >= this.#banknotes[i].Nominal && this.#banknotes[i].Quantity > 0) {
-                        value -= this.#banknotes[i].Nominal
-                        this.#banknotes[i].Quantity = this.#banknotes[i].Quantity - 1
+                for (let i = 0; i < this.Banknotes.length; i++) {
+                    while (value >= this.Banknotes[i].Nominal && this.Banknotes[i].Quantity > 0) {
+                        value -= this.Banknotes[i].Nominal
+                        this.Banknotes[i].Quantity = this.Banknotes[i].Quantity - 1
                     }
                 }
             }
