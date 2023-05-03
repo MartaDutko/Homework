@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+    }
+    .wrapper{
+        width: 50%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        border: 1px solid black;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    label{
+        margin: 5%;
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <label>
+                Введіть місяць від 1-12
+                <input type="number" id="month" >
+            </label>
+            <label>
+                Введіть oцінку від 1-100
+                <input type="number" id="rating">
+            </label>
+            <div>
+            <button id="btn">Перевірити</button>
+            </div>
+            <span id="result"></span>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
