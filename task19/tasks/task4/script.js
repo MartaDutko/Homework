@@ -18,7 +18,7 @@ class Star {
     }
 
     random(min,max){
-        return min + Math.floor(Math.random() * (max - 0 + 1))
+        return min + Math.floor(Math.random() * (max - min + 1))
     }
 
     render() {

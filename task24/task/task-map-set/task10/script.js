@@ -5,7 +5,7 @@
 let mathWorkshop = ['Ivanov', 'Petriv', 'Pavliv', 'Nazariv', 'Andrewoch']
 let historyWorkshop = ['Ivanov', 'Nazariv', 'Vasiliv']
 
-function studentWorkshop (math, history) {
+function studentWorkshop(math, history) {
     let map = new Map()
     for (const el of math) {
         let count = map.get(el) || 0
@@ -22,11 +22,14 @@ function studentWorkshop (math, history) {
             twoWorkshop++
     }
     console.log(`History & math visit ${twoWorkshop} students`);
-
-    let mathWorkshop = new Set(math).size
-    console.log(`Math visit ${mathWorkshop}`);
-    let historyWorkshop = new Set(history).size
-    console.log(`Hystory visit ${historyWorkshop}`);
 }
-
 studentWorkshop(mathWorkshop, historyWorkshop)
+
+function getCount(arr, nameWorkshop) {
+    let set = new Set()
+    for (const el of arr) {
+        set.add(el)
+    }
+    return `Гурток ${nameWorkshop} відвідує = ${set.size} учнів `
+}
+console.log(getCount(mathWorkshop, 'Math'));

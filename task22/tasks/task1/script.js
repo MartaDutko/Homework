@@ -43,18 +43,34 @@ let objClients = [
     }
 ]
 
+class NotEnoughMoney extends Error{
+    constructor(){
+        super()
+        this.mesage = 'Недостатньо грошей'
+        this.name = 'NotEnoughMoney'
+    }
+}
+
 class Client {
     constructor(objClient) {
         this.id = objClient.id
         this.FDI = objClient.FDI
         this.balanceMoney = objClient.balanceMoney
     }
-    addMoneyToAccoyunt(value) {
+    addMoneyToAccount(value) {
         this.balanceMoney += value
     }
     withdrawingMoneyOfAccount(value) {
-        if (this.balanceMoney - value > 0)
+        try{
+            if (this.balanceMoney - value < 0)
+            throw new NotEnoughMoney
+
             this.balanceMoney -= value
+        }
+        catch(err){
+            if(err instanceof NotEnoughMoney)
+            console.log(err.mesage);
+        }
     }
     toString() {
         return `Id: ${this.id}, name ${this.FDI}, balance:${this.balanceMoney} UAH`

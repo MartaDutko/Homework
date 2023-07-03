@@ -21,11 +21,14 @@
             constructor(message, seconds) {
                 if (Reminder.reminder)
                     return Reminder.reminder
-            
                 this.message = message
+                this.seconds = seconds
                 this.counter = 1
-                this.timer = setInterval(() => console.log(`${this.message} ${this.counter++}`), 1000 * seconds);
+                this.timer = this.setInterval()
                 Reminder.reminder = this
+            }
+            setInterval() {
+                return setInterval(() => console.log(`${this.message} ${this.counter++}`), 1000 * this.seconds);
             }
             set ChangeMessage(value) {
                 this.message = value
@@ -34,11 +37,9 @@
                 clearInterval(this.timer)
             }
         }
-        let reminder = new Reminder('message',1)
-        // let reminder2 = new Reminder('second message')
-        reminder.ChangeMessage = 'new message'
+        let reminder = new Reminder('message', 1)
+        // reminder.ChangeMessage = 'new message'
         reminder.stopTimer()
-        
     </script>
 </body>
 

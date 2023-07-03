@@ -2,12 +2,18 @@
 // таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить
 // середнє значення.
 
-let mainBlock = document.querySelector('.mainBlock')
-let getTable = document.getElementById('getTable')
+// getTableBtn
+const getTableBtn = document.getElementById('getTable').onclick = function () {
+    createTable('.mainBlock')
+}
 
-getTable.onclick = function () {
-    let priceNumber = parseInt(document.getElementById('priceNumber').value)
-    for (let i = 0; i < priceNumber; i++) {
+function getCountFields(targetSelector) {
+    return parseInt(document.getElementById(targetSelector).value)
+}
+function createTable(targetSelector) {
+    let mainBlock = document.querySelector(targetSelector)
+    const inputNumber = getCountFields('priceNumber')
+    for (let i = 0; i < inputNumber; i++) {
         let input = document.createElement('input')
         input.setAttribute('type', 'number')
         input.setAttribute('value', '0')
@@ -16,15 +22,32 @@ getTable.onclick = function () {
     }
 }
 
-document.getElementById('getSum').onclick = function getAverageValue() {
-    let scores = document.querySelectorAll('.scores')
+// getSumBtn
+const getSumBtn = document.getElementById('getSum').onclick = function () {
+    getAverageScore('.wrapper')
+}
+
+function getSum(targetSelector) {
+    let scores = document.querySelectorAll(targetSelector)
     let sum = 0
-    let count = 0
-    for (const scoreValue of scores) {
-        sum += parseFloat(scoreValue.value)
-        count++
+    let scoresLength = scores.length
+    for (const el of scores) {
+        sum += parseInt(el.value)
     }
-    let p = document.createElement('p')
-    p.innerText = 'Sum= ' + sum / count
-    document.querySelector('.wrapper').append(p)
+    return { sum, scoresLength }
+}
+
+function getAverageScore(targetSelector) {
+    let container = document.querySelector(targetSelector)
+    let sum = getSum('.scores').sum
+    let scoresLength = getSum('.scores').scoresLength
+    let res = sum / scoresLength
+    let p = createElelment('p', `Sum = ${res}`)
+    container.append(p)
+}
+
+function createElelment(tag, innerText) {
+    let element = document.createElement(tag)
+    element.innerText = innerText
+    return element
 }

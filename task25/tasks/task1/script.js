@@ -17,8 +17,9 @@ class PhoneNumber {
         }
     }
 
-    [Symbol.toPrimitive](hint){
+    [Symbol.toPrimitive](hint) {
         switch (hint) {
+            case 'number': return this.number
             case 'string': return this.operator
         }
     }

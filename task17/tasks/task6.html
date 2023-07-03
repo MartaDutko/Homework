@@ -32,7 +32,6 @@
             static printHistory() {
                 return Hystory.testArr
             }
-
             toString() {
                 return `${Hystory.testArr}`
             }
@@ -64,10 +63,6 @@
         class MultChecker {
             static minValue = 1
             static maxValue = 9
-            firstNum
-            secondNum
-            correctAnswer
-            userAnswer
 
             randomNumber() {
                 return MultChecker.minValue + Math.floor(Math.random() * (MultChecker.maxValue - MultChecker.minValue + 1))
@@ -80,7 +75,6 @@
 
             print() {
                 return `${this.firstNum = this.randomNumber()} * ${this.secondNum = this.randomNumber()}`
-                // return `${this.firstNum = 5} * ${this.secondNum = 5}`
             }
             toString() {
                 return `${this.firstNum}, ${this.secondNum},${this.correctAnswer},${this.userAnswer}`
@@ -103,10 +97,6 @@
         class AddChecker {
             static minValue = 1
             static maxValue = 9
-            firstNum
-            secondNum
-            correctAnswer
-            userAnswer
             randomNumber() {
                 return AddChecker.minValue + Math.floor(Math.random() * (AddChecker.maxValue - AddChecker.minValue + 1))
             }
@@ -132,24 +122,6 @@
             }
         }
 
-        // *
-        // let multChecker = new MultChecker()
-        // console.log(multChecker.toString());
-        // multChecker.userAnswerCheck(25)
-        // multChecker.testDataPush()
-
-        // // +
-        // let addChecker = new AddChecker()
-        // console.log(addChecker.toString());
-        // addChecker.userAnswerCheck(2)
-        // addChecker.testDataPush()
-
-        // let hystory = new Hystory()
-        // console.log(Hystory.testArr);
-
-
-
-
         // singleTone
         class TestManager {
             static test
@@ -159,8 +131,6 @@
                 TestManager.test = this
             }
             printHistory() {
-                // let history = new Hystory
-                // document.write(`${Hystory.testArr}`)
                 console.table(Hystory.printHistory())
             }
             timer(N, time) {
@@ -188,100 +158,12 @@
                 }, time * 1000)
 
             }
-            toString(){
-                    return `${this.startTest}`
+            toString() {
+                return `${this.startTest}`
             }
         }
         let test = new TestManager()
         test.timer(2, 5)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // class User{
-        //     constructor(name, age, male, addres, car){
-        //         this.name = name
-        //         this.age = age
-        //         this.male = male
-        //         this.addres = addres
-        //         this.car = car
-        //     }
-        // }
-
-        // class Addres{
-        //     constructor(street, numberBuild){
-        //         this.street = street
-        //         this.numberBuild = numberBuild
-        //     }
-        // }
-
-        // class Car{
-        //     #model
-        //     constructor(model){
-        //         this.Model = model
-        //     }
-
-        //     set Model(model){
-        //         this.#model = model
-        //     }
-
-        //     get Model(){
-        //         return this.#model
-        //     }
-        // }
-
-        // let user = [
-        //     new User('nmae', 12,'man', new Addres('O.Pos', 22), new Car('VAG')),
-        //     new User('nmae', 12,'man', new Addres('O.Pos', 22)),
-        //     new User('nmae', 12,'man', new Addres('O.Pos', 22)),
-        //     new User('nmae', 12,'man', new Addres('O.Pos', 22)),
-        //     new User('nmae', 12,'man', new Addres('O.Pos', 22)),
-        // ]
-
-        // console.log(user[0].car.Model);
-        // console.log(user[0].car.Model = 'test');
-        // console.log(user[0].car.Model);
-
-
 
     </script>
 </body>

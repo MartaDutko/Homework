@@ -9,7 +9,7 @@ let listOfAthletes = [
         surname: 'Ivanov'
     },
     {
-        status: true,
+        status: false,
         name: 'Pavlo',
         surname: 'Pavliv'
     },
@@ -49,6 +49,7 @@ class Sportsmen {
         this.render()
 
     }
+
     render() {
         let blockUser = document.createElement('div')
         blockUser.classList = 'blockUser'

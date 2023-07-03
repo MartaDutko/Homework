@@ -24,16 +24,19 @@
                 return this.#baseOfGoods
             }
             set BaseOfGoods(value) {
+                if (value < 0)
+                    throw new Error('Error')
+
                 this.#baseOfGoods = value
             }
             // Організувати реєстрацію
             registrationOfGoods(name, unit, quantity, manufacturersCompany, registrationNumber) {
-                this.#baseOfGoods.push(new BaseOfGoods({ nameProduct: name, unit: unit, quantity: quantity, manufacturerCompany: new ManufacturerCompany(manufacturersCompany, registrationNumber) }),)
+                this.BaseOfGoods.push(new Product({ nameProduct: name, unit: unit, quantity: quantity, manufacturerCompany: new ManufacturerCompany(manufacturersCompany, registrationNumber) }),)
             }
 
             // Організувати відвантаження
             shipmentOfGoods(nameGood, quantity) {
-                let product = this.#baseOfGoods.filter(el => el.Name == nameGood)
+                let product = this.BaseOfGoods.filter(el => el.Name == nameGood)
                 if (product[0].Quantity - quantity < 1)
                     throw new Error('Товар закінчився')
                 product[0].Quantity = product[0].Quantity - quantity
@@ -41,12 +44,12 @@
 
             // фільтрація за назвою товару
             filteringByProductName(value) {
-                return this.#baseOfGoods.filter(el => el.Name === value)
+                return this.BaseOfGoods.filter(el => el.Name === value)
             }
 
             // фільтрація за назвою фірми
             filteringByNameFirm(value) {
-                return this.#baseOfGoods.filter(el => el.ManufacturerCompany.Name === value)
+                return this.BaseOfGoods.filter(el => el.ManufacturerCompany.Name === value)
             }
         }
 
@@ -80,8 +83,8 @@
             }
         }
 
-        // База товарів
-        class BaseOfGoods {
+        // Товаp
+        class Product {
             #name
             #unit
             #quantity
@@ -124,15 +127,15 @@
         }
 
         let baseOfGoods = [
-            new BaseOfGoods({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник1', 'реєстраційний номер') }),
-            new BaseOfGoods({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
-            new BaseOfGoods({ nameProduct: 'product2', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
-            new BaseOfGoods({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
-            new BaseOfGoods({ nameProduct: 'product3', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник1', 'реєстраційний номер') }),
-            new BaseOfGoods({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
-            new BaseOfGoods({ nameProduct: 'product2', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
-            new BaseOfGoods({ nameProduct: 'product2', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
-            new BaseOfGoods({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник1', 'реєстраційний номер') }),
+            new Product({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник1', 'реєстраційний номер') }),
+            new Product({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new Product({ nameProduct: 'product2', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new Product({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new Product({ nameProduct: 'product3', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник1', 'реєстраційний номер') }),
+            new Product({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new Product({ nameProduct: 'product2', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new Product({ nameProduct: 'product2', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник', 'реєстраційний номер') }),
+            new Product({ nameProduct: 'product1', unit: 32, quantity: 34, manufacturerCompany: new ManufacturerCompany('фірма виробник1', 'реєстраційний номер') }),
         ]
 
         let warehouse = new Warehouse(baseOfGoods)

@@ -30,14 +30,9 @@ let arrBoock = [
 
 function getNumberBoocks(arr) {
     let map = new Map()
-    for (const el of arrBoock) {
-        let cout = 1
-        if (!map.has(el.autor)) {
-            map.set(el.autor, cout)
-        }
-        else {
-            map.set(el.autor, ++cout)
-        }
+    for (const el of arr) {
+        let count = map.get(el.autor) || 0
+        map.set(el.autor, ++count)
     }
     return map
 }

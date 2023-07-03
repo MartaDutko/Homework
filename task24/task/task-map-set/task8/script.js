@@ -39,17 +39,11 @@ let arrStudent = [
 ]
 
 function getCountFacultets(arr) {
-    let map = new Map()
-    let count = 1
+    let set = new Set()
     for (const el of arr) {
-        if (!map.has(el.faculty))
-            map.set(el.faculty, count)
-
-        else
-            map.set(el.faculty, ++count)
-
+        set.add(el.faculty)
     }
-    return map
+    return set
 }
 
 console.log(getCountFacultets(arrStudent));
@@ -57,11 +51,8 @@ console.log(getCountFacultets(arrStudent));
 function getCountCourse(arr) {
     let map = new Map()
     for (const el of arr) {
-        let count = 1
-        if (!map.has(el.course))
-            map.set(el.course, count)
-        else
-            map.set(el.course, ++count)
+        let count = map.get(el.faculty) || 0
+        map.set(el.faculty, ++count)
     }
     return map
 }

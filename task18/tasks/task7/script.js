@@ -2,16 +2,29 @@
 // транспорту(авто, автобус, літак - випадаючий список), харчування(сніданок, обід, вечеря – checkbоx) та
 // одного з 3 - х гідів(використати - radio buttons).Ціни визначте самі.Підрахувати загальну вартість.
 
-document.getElementById('btnTotalPrice').onclick = function() {
-    let sum = 0
-    sum += parseInt(document.getElementById('typeOfTransport').value)
-    let inputs = document.getElementsByTagName('input')
+let container = document.querySelector('.container')
+container.onclick = function (e) {
+    if (e.target.tagName === 'BUTTON') {
+        let sum = 0
+        sum += parseInt(document.getElementById('typeOfTransport').value)
+        let inputs = document.getElementsByTagName('input')
 
-    for (const el of inputs) {
-        if (el.checked)
-            sum += parseInt(el.value)
+        for (const el of inputs) {
+            if (el.checked)
+                sum += parseInt(el.value)
+        }
+        let p = createElelment('p', `Загальна сума = ${sum}`)
+        findConteiner('.wrapper', e).append(p)
     }
-    let p = document.createElement('p')
-    p.innerText = `Загальна сума = ${sum}`
-    document.querySelector('.wrapper').append(p)
+}
+
+function findConteiner(selector, e) {
+    let element = e.target
+    return element.closest(selector);
+}
+
+function createElelment(tag, innerText) {
+    let element = document.createElement(tag)
+    element.innerText = innerText
+    return element
 }

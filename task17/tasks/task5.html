@@ -36,21 +36,21 @@
             }
             // Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.)
             librarySectionsByGenre(value) {
-                return this.#boocksList.filter(el => el.BookGenre === value)
+                return this.BoocksList.filter(el => el.BookGenre === value)
             }
 
             originOfTheBook(value) {
-                return this.#boocksList.find(el => el.NameOfBoock === value).OriginOfTheBook
+                return this.BoocksList.find(el => el.NameOfBoock === value).OriginOfTheBook
             }
 
             currentlyAvailable(value) {
-                return this.#boocksList.find(el => el.NameOfBoock === value).CurrentlyAvailable
+                return this.BoocksList.find(el => el.NameOfBoock === value).CurrentlyAvailable
             }
 
             // додавання книг
             addBoock(autorName, yearBirdthAutor, descriptionAutor, boockName, genre, namePublishingHouse, registrationNumberPublishingHouse,
                 yearOfIntroductionPublishingHouse, originOfTheBookValue, available) {
-                this.#boocksList.push(new Book({
+                this.BoocksList.push(new Book({
                     autor: new Authors(autorName, yearBirdthAutor, descriptionAutor),
                     nameOfBoock: boockName,
                     bookGenre: genre,
@@ -62,20 +62,20 @@
 
             // вилучення книг
             deleteBoock(value) {
-                this.#boocksList = this.#boocksList.filter(el => el.NameOfBoock !== value)
+                this.BoocksList = this.BoocksList.filter(el => el.NameOfBoock !== value)
             }
 
             // вибір книг за назвою, за ПІБ автора, за видавництвом
             selectionOfBooksByTitle(value) {
-                return this.#boocksList.filter(el => el.NameOfBoock === value)
+                return this.BoocksList.filter(el => el.NameOfBoock === value)
             }
             
             selectionOfBooksByFullName(value) {
-                return this.#boocksList.filter(el => el.Author.FullName === value)
+                return this.BoocksList.filter(el => el.Author.FullName === value)
             }
 
             selectionOfBooksByPublishHouse(value) {
-                return this.#boocksList.filter(el => el.PublishingHouse.NamePublisher === value)
+                return this.BoocksList.filter(el => el.PublishingHouse.NamePublisher === value)
             }
         }
 
@@ -139,7 +139,7 @@
                 this.#currentlyAvailable = value
             }
             toString() {
-                return `${this.#autor},${this.#nameOfBoock},${this.#bookGenre},${this.#publishingHouse},${this.#originOfTheBook},${this.#currentlyAvailable}`
+                return `${this.Author},${this.NameOfBoock},${this.BookGenre},${this.PublishingHouse},${this.OriginOfTheBook},${this.CurrentlyAvailable}`
             }
         }
 
@@ -181,7 +181,7 @@
             }
 
             toString() {
-                return `${this.#fullName}, ${this.#yearBirdth}, ${this.#briefDescription}`
+                return `${this.FullName}, ${this.YearBirdth}, ${this.BriefDescription}`
             }
         }
 
@@ -213,7 +213,6 @@
                 this.#registrationNumber = value
             }
 
-
             get YearOfIntroduction() {
                 return this.#yearOfIntroduction
             }
@@ -224,7 +223,7 @@
             }
 
             toString() {
-                return `${this.#namePublisher}, ${this.#registrationNumber}, ${this.#yearOfIntroduction}`
+                return `${this.NamePublisher}, ${this.RegistrationNumber}, ${this.YearOfIntroduction}`
             }
         }
 

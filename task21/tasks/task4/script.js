@@ -77,15 +77,15 @@ class TableCreator {
         return table
     }
 
-    createTables(selector, tableAmount = 3) {
+    createTables(selector) {
         let selectorHTML = document.querySelector(selector)
-        for (let i = 0; i < tableAmount; i++) {
             selectorHTML.append(this.createCountEvent())
             selectorHTML.append(this.createTable())
-        }
         document.body.append(selectorHTML)
     }
 }
 
-let a = new TableCreator()
-a.createTables('.wrapper')
+let table = new TableCreator()
+for (let i = 0; i < 3; i++) {
+    table.createTables('.wrapper')
+}
